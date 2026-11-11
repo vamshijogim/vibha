@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=70a6c336-2ef8-4f52-abc0-1d737ea63c80
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#fef3eb">
+<title>Vibha</title>
+<link rel="manifest" href="data:application/json,%7B%22name%22%3A%22Vibha%22%2C%22short_name%22%3A%22Vibha%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23fef3eb%22%2C%22theme_color%22%3A%22%23fef3eb%22%2C%22start_url%22%3A%22.%2F%22%7D">
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  
+  /* THEMES */
+  :root, [data-theme="peach"] {
+    --bg-1: #fff5ed; --bg-2: #ffe4d1; --bg-3: #ffd0b5;
+    --surface: rgba(255,255,255,0.65); --surface-2: rgba(255,255,255,0.85);
+    --border: rgba(255,107,107,0.12);
+    --text: #2d1810; --text-soft: #6b4a35; --text-mute: #a08570;
+    --accent: #ff6b6b; --accent-2: #ffa94d;
+    --ring-1: #ff6b6b; --ring-2: #ffa94d; --ring-3: #f783ac;
+    --shadow: 0 10px 40px rgba(255,107,107,0.12);
+    --grad-hero: linear-gradient(135deg, #ff9472 0%, #ff6b9d 50%, #ffa94d 100%);
+    --grad-sat: linear-gradient(135deg, #ff6b6b, #ffa94d);
+    --grad-calc: linear-gradient(135deg, #6ba8ff, #4a8ce8);
+    --grad-stats: linear-gradient(135deg, #ffd75e, #ff9472);
+    --grad-lit: linear-gradient(135deg, #ff8fa3, #ff6b9d);
+    --grad-env: linear-gradient(135deg, #5dd49a, #34c876);
+    --grad-art: linear-gradient(135deg, #f783ac, #d63384);
+    --grad-collin: linear-gradient(135deg, #b794f6, #9061eb);
+    --grad-algebra: linear-gradient(135deg, #ffb978, #ff8c42);
+  }
+  [data-theme="wrapped"] {
+    --bg-1: #1a0b2e; --bg-2: #2d1b4e; --bg-3: #1f3a8a;
+    --surface: rgba(255,255,255,0.08); --surface-2: rgba(255,255,255,0.12);
+    --border: rgba(255,255,255,0.10);
+    --text: #fff9f0; --text-soft: rgba(255,249,240,0.75); --text-mute: rgba(255,249,240,0.45);
+    --accent: #fe6f5e; --accent-2: #84fab0;
+    --ring-1: #fe6f5e; --ring-2: #84fab0; --ring-3: #c084fc;
+    --shadow: 0 10px 40px rgba(254,111,94,0.25);
+    --grad-hero: linear-gradient(135deg, #84fab0, #c084fc 50%, #fe6f5e);
+    --grad-sat: linear-gradient(135deg, #fe6f5e, #f6d365);
+    --grad-calc: linear-gradient(135deg, #84fab0, #6ba8ff);
+    --grad-stats: linear-gradient(135deg, #f6d365, #fe6f5e);
+    --grad-lit: linear-gradient(135deg, #c084fc, #fe6f5e);
+    --grad-env: linear-gradient(135deg, #84fab0, #5dd49a);
+    --grad-art: linear-gradient(135deg, #c084fc, #ff6b9d);
+    --grad-collin: linear-gradient(135deg, #c084fc, #6ba8ff);
+    --grad-algebra: linear-gradient(135deg, #f6d365, #fe6f5e);
+  }
+  [data-theme="costar"] {
+    --bg-1: #f5f0e8; --bg-2: #e8e0d3; --bg-3: #d4c4b0;
+    --surface: rgba(255,253,248,0.75); --surface-2: rgba(255,253,248,0.92);
+    --border: rgba(40,40,40,0.08);
+    --text: #1a1a1a; --text-soft: #555; --text-mute: #888;
+    --accent: #4a3aff; --accent-2: #d4a5ff;
+    --ring-1: #4a3aff; --ring-2: #d4a5ff; --ring-3: #ff6b9d;
+    --shadow: 0 4px 20px rgba(0,0,0,0.06);
+    --grad-hero: linear-gradient(135deg, #4a3aff, #d4a5ff 50%, #1a1a1a);
+    --grad-sat: linear-gradient(135deg, #4a3aff, #d4a5ff);
+    --grad-calc: linear-gradient(135deg, #6ba8ff, #4a3aff);
+    --grad-stats: linear-gradient(135deg, #d4a5ff, #ff6b9d);
+    --grad-lit: linear-gradient(135deg, #ff6b9d, #d4a5ff);
+    --grad-env: linear-gradient(135deg, #5dd49a, #4a3aff);
+    --grad-art: linear-gradient(135deg, #ff6b9d, #4a3aff);
+    --grad-collin: linear-gradient(135deg, #d4a5ff, #4a3aff);
+    --grad-algebra: linear-gradient(135deg, #ffb978, #d4a5ff);
+  }
+  [data-theme="y2k"] {
+    --bg-1: #e0e4ff; --bg-2: #f4e4ff; --bg-3: #ffe4f0;
+    --surface: rgba(255,255,255,0.55); --surface-2: rgba(255,255,255,0.85);
+    --border: rgba(118,75,162,0.15);
+    --text: #1a1140; --text-soft: #5b4a8a; --text-mute: #9a8ec0;
+    --accent: #ec4899; --accent-2: #06b6d4;
+    --ring-1: #ec4899; --ring-2: #06b6d4; --ring-3: #fbbf24;
+    --shadow: 0 10px 40px rgba(168,85,247,0.18);
+    --grad-hero: linear-gradient(135deg, #06b6d4, #ec4899 50%, #fbbf24);
+    --grad-sat: linear-gradient(135deg, #ec4899, #fbbf24);
+    --grad-calc: linear-gradient(135deg, #06b6d4, #a855f7);
+    --grad-stats: linear-gradient(135deg, #fbbf24, #ec4899);
+    --grad-lit: linear-gradient(135deg, #ec4899, #a855f7);
+    --grad-env: linear-gradient(135deg, #06b6d4, #84fab0);
+    --grad-art: linear-gradient(135deg, #ec4899, #06b6d4);
+    --grad-collin: linear-gradient(135deg, #a855f7, #06b6d4);
+    --grad-algebra: linear-gradient(135deg, #fbbf24, #ec4899);
+  }
+  [data-theme="mint"] {
+    --bg-1: #f0fdf4; --bg-2: #d4f5e0; --bg-3: #b8edc8;
+    --surface: rgba(255,255,255,0.70); --surface-2: rgba(255,255,255,0.88);
+    --border: rgba(16,185,129,0.12);
+    --text: #14532d; --text-soft: #4d7c5f; --text-mute: #87a899;
+    --accent: #10b981; --accent-2: #34d399;
+    --ring-1: #10b981; --ring-2: #facc15; --ring-3: #06b6d4;
+    --shadow: 0 10px 40px rgba(16,185,129,0.15);
+    --grad-hero: linear-gradient(135deg, #10b981, #facc15 50%, #34d399);
+    --grad-sat: linear-gradient(135deg, #10b981, #facc15);
+    --grad-calc: linear-gradient(135deg, #06b6d4, #10b981);
+    --grad-stats: linear-gradient(135deg, #facc15, #10b981);
+    --grad-lit: linear-gradient(135deg, #34d399, #facc15);
+    --grad-env: linear-gradient(135deg, #10b981, #34d399);
+    --grad-art: linear-gradient(135deg, #facc15, #34d399);
+    --grad-collin: linear-gradient(135deg, #06b6d4, #10b981);
+    --grad-algebra: linear-gradient(135deg, #facc15, #10b981);
+  }
+  [data-theme="midnight"] {
+    --bg-1: #0a0a14; --bg-2: #1a1530; --bg-3: #2a1a45;
+    --surface: rgba(255,255,255,0.06); --surface-2: rgba(255,255,255,0.10);
+    --border: rgba(255,255,255,0.08);
+    --text: #f5f5fa; --text-soft: rgba(245,245,250,0.65); --text-mute: rgba(245,245,250,0.40);
+    --accent: #ff5e9c; --accent-2: #b794f6;
+    --ring-1: #ff5e9c; --ring-2: #b794f6; --ring-3: #7ee7e7;
+    --shadow: 0 10px 40px rgba(0,0,0,0.4);
+    --grad-hero: linear-gradient(135deg, #ff5e9c, #b794f6 50%, #7ee7e7);
+    --grad-sat: linear-gradient(135deg, #ff5e9c, #b794f6);
+    --grad-calc: linear-gradient(135deg, #7ee7e7, #b794f6);
+    --grad-stats: linear-gradient(135deg, #b794f6, #ff5e9c);
+    --grad-lit: linear-gradient(135deg, #ff5e9c, #7ee7e7);
+    --grad-env: linear-gradient(135deg, #7ee7e7, #84fab0);
+    --grad-art: linear-gradient(135deg, #ff5e9c, #b794f6);
+    --grad-collin: linear-gradient(135deg, #b794f6, #7ee7e7);
+    --grad-algebra: linear-gradient(135deg, #ffa94d, #ff5e9c);
+  }
+
+  html { background: var(--bg-1); }
+  body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+    background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+    background-attachment: fixed; min-height: 100vh;
+    color: var(--text); -webkit-font-smoothing: antialiased;
+    overflow-x: hidden; padding-bottom: env(safe-area-inset-bottom);
+    transition: background 0.5s;
+  }
+  
+  .app { max-width: 480px; margin: 0 auto; min-height: 100vh; position: relative; z-index: 1; padding: 14px 14px 110px; }
+  
+  /* HEADER */
+  .hdr { display: flex; justify-content: space-between; align-items: center; padding: 4px 4px 14px; }
+  .hdr-name { font-size: 24px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+  .hdr-name .em { background: var(--grad-hero); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hdr-stats { display: flex; gap: 5px; align-items: center; }
+  .stat-chip { background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 5px 10px; border-radius: 100px; font-size: 11px; font-weight: 800; color: var(--text); box-shadow: var(--shadow); }
+  .theme-btn { background: var(--surface-2); border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 17px; cursor: pointer; box-shadow: var(--shadow); margin-left: 3px; transition: transform 0.2s; }
+  .theme-btn:active { transform: scale(0.9); }
+  
+  /* AES BANNER */
+  .aes-banner { background: var(--grad-hero); border-radius: 24px; padding: 16px 18px; margin-bottom: 12px; color: white; position: relative; overflow: hidden; box-shadow: 0 14px 36px rgba(255,107,107,0.22); cursor: pointer; transition: transform 0.2s; }
+  .aes-banner:active { transform: scale(0.98); }
+  .aes-banner::after { content: "▲"; position: absolute; top: -20px; right: -8px; font-size: 110px; opacity: 0.18; line-height: 1; }
+  .aes-pill { display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); padding: 3px 9px; border-radius: 10px; font-size: 9px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .aes-big { font-size: 36px; font-weight: 900; letter-spacing: -1.4px; line-height: 1; margin-bottom: 3px; }
+  .aes-big .small { font-size: 12px; opacity: 0.92; font-weight: 700; }
+  .aes-traj { font-size: 12px; font-weight: 700; opacity: 0.96; margin-top: 4px; }
+  
+  /* CHIPS - subject filter */
+  .chips-wrap { margin-bottom: 14px; }
+  .chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex-shrink: 0; padding: 8px 13px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; font-weight: 800; color: var(--text-soft); white-space: nowrap; cursor: pointer; transition: all 0.15s; box-shadow: var(--shadow); }
+  .chip:active { transform: scale(0.94); }
+  .chip.active { background: var(--text); color: var(--bg-1); border-color: var(--text); }
+  
+  /* CARD BASE */
+  .card { background: var(--surface); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px); border: 1px solid var(--border); border-radius: 22px; padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  .card-label { font-size: 10px; font-weight: 900; letter-spacing: 2px; color: var(--text-mute); text-transform: uppercase; margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .card-label .badge { background: var(--accent); color: white; padding: 2px 7px; border-radius: 100px; font-size: 9px; letter-spacing: 0.5px; }
+  .card-q { font-size: 20px; font-weight: 900; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 12px; color: var(--text); }
+  
+  /* DAILY SAT Q CARD */
+  .dq-card { border: 2px solid var(--accent); }
+  .dq-question { font-size: 15px; font-weight: 700; line-height: 1.4; color: var(--text); margin-bottom: 12px; }
+  .dq-opts { display: grid; gap: 6px; }
+  .dq-opt { background: var(--surface-2); border: 1px solid var(--border); padding: 10px 13px; border-radius: 12px; font-size: 13px; cursor: pointer; transition: all 0.15s; color: var(--text); text-align: left; font-family: inherit; font-weight: 600; }
+  .dq-opt:active { transform: scale(0.98); }
+  .dq-opt.correct { background: #10b981; color: white; border-color: #10b981; }
+  .dq-opt.wrong { background: #ff5e7e; color: white; border-color: #ff5e7e; }
+  .dq-feedback { margin-top: 10px; padding: 11px 13px; background: var(--surface-2); border-radius: 12px; font-size: 12px; line-height: 1.5; color: var(--text-soft); }
+  .dq-feedback strong { color: var(--text); }
+  
+  /* HERO LECTURE CARD */
+  .hero-card { border-radius: 22px; overflow: hidden; position: relative; min-height: 180px; margin-bottom: 12px; box-shadow: var(--shadow); cursor: pointer; }
+  .hero-card .bg { position: absolute; inset: 0; }
+  .hero-card .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.5)); }
+  .hero-symbol { position: absolute; bottom: -20px; right: -5px; font-size: 140px; opacity: 0.18; font-family: Georgia, serif; font-style: italic; color: white; line-height: 1; }
+  .hero-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px; color: white; }
+  .hero-meta { position: absolute; top: 14px; left: 18px; right: 18px; display: flex; justify-content: space-between; color: white; font-size: 10px; font-weight: 800; letter-spacing: 1px; opacity: 0.92; }
+  .hero-pill { display: inline-block; background: rgba(255,255,255,0.25); backdrop-filter: blur(10px); padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 900; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
+  .hero-title { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 4px; }
+  .hero-prof { font-size: 12px; opacity: 0.92; font-weight: 700; }
+  
+  /* TODAY CARD */
+  .today-prompt-wrap { background: var(--surface-2); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+  .today-prompt { font-size: 15px; font-weight: 700; line-height: 1.4; color: var(--text); margin-bottom: 10px; }
+  .today-prompt .em { color: var(--accent); }
+  .today-input { width: 100%; background: var(--bg-1); border: 1px solid var(--border); color: var(--text); padding: 11px 13px; border-radius: 12px; font-size: 13px; font-family: inherit; font-weight: 500; resize: none; min-height: 60px; line-height: 1.5; }
+  .today-input:focus { outline: none; border-color: var(--accent); }
+  .today-rings { display: flex; gap: 9px; padding: 12px; background: var(--surface-2); border-radius: 16px; }
+  .ring-block { flex: 1; display: flex; gap: 8px; align-items: center; cursor: pointer; }
+  .ring-svg { width: 34px; height: 34px; flex-shrink: 0; }
+  .ring-svg circle { fill: none; stroke-width: 4.5; stroke-linecap: round; }
+  .ring-bg-c { stroke: var(--border); }
+  .ring-info .lbl { font-size: 9px; font-weight: 900; color: var(--text-mute); letter-spacing: 1px; }
+  .ring-info .val { font-size: 14px; font-weight: 900; color: var(--text); letter-spacing: -0.3px; line-height: 1; margin-top: 1px; }
+  
+  /* AI TUTOR CARD */
+  .tutor-card { background: var(--grad-hero); color: white; position: relative; overflow: hidden; cursor: pointer; }
+  .tutor-card::after { content: "✦"; position: absolute; top: -15px; right: -5px; font-size: 100px; opacity: 0.18; line-height: 1; }
+  .tutor-card .card-label { color: rgba(255,255,255,0.8); }
+  .tutor-card .card-q { color: white; }
+  .tutor-card-sub { font-size: 12px; opacity: 0.92; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+  .prof-row { display: flex; gap: 5px; flex-wrap: wrap; }
+  .prof-chip { background: rgba(255,255,255,0.22); backdrop-filter: blur(8px); padding: 5px 9px; border-radius: 11px; font-size: 10px; font-weight: 800; color: white; }
+  
+  /* LECTURE LIST */
+  .lec-row { display: flex; gap: 10px; align-items: center; padding: 11px 13px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 6px; }
+  .lec-row.done { opacity: 0.55; }
+  .lec-num { flex-shrink: 0; width: 30px; height: 30px; border-radius: 10px; background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 900; color: var(--text); }
+  .lec-row.done .lec-num { background: var(--accent); color: white; }
+  .lec-row.done .lec-num::before { content: "✓"; }
+  .lec-row.done .lec-num .n { display: none; }
+  .lec-info { flex: 1; min-width: 0; }
+  .lec-title { font-size: 13px; font-weight: 800; color: var(--text); line-height: 1.25; }
+  .lec-meta { font-size: 10px; color: var(--text-mute); font-weight: 700; margin-top: 1px; }
+  .lec-actions { display: flex; gap: 4px; }
+  .ic-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; color: var(--text); font-weight: 800; }
+  .ic-btn.open { background: var(--text); color: var(--bg-1); border-color: var(--text); }
+  .ic-btn.check.done { background: var(--accent); color: white; border-color: var(--accent); }
+  
+  /* LIVE SESSION */
+  .live-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 11px; margin-bottom: 8px; display: flex; gap: 11px; box-shadow: var(--shadow); }
+  .live-cover { flex-shrink: 0; width: 60px; height: 60px; border-radius: 13px; display: flex; align-items: center; justify-content: center; color: white; font-family: Georgia, serif; font-style: italic; font-size: 28px; }
+  .live-info { flex: 1; min-width: 0; }
+  .live-pill { display: inline-block; background: var(--grad-hero); color: white; font-size: 9px; font-weight: 900; letter-spacing: 0.5px; padding: 3px 7px; border-radius: 7px; margin-bottom: 4px; }
+  .live-title { font-size: 13px; font-weight: 800; color: var(--text); line-height: 1.25; margin-bottom: 2px; }
+  .live-org { font-size: 10px; color: var(--text-mute); font-weight: 700; margin-bottom: 4px; }
+  .live-actions { display: flex; gap: 5px; }
+  .mini-btn { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 5px 9px; font-size: 11px; font-weight: 800; color: var(--text); cursor: pointer; font-family: inherit; }
+  .mini-btn.primary { background: var(--text); color: var(--bg-1); border-color: var(--text); }
+  
+  /* ERROR LOG */
+  .errlog-add { background: var(--accent); color: white; border: none; width: 100%; padding: 12px; border-radius: 14px; font-size: 13px; font-weight: 900; cursor: pointer; font-family: inherit; }
+  .errlog-entry { background: var(--surface-2); border-radius: 12px; padding: 9px 11px; margin-bottom: 6px; display: flex; align-items: center; gap: 9px; }
+  .err-cat { font-size: 9px; font-weight: 900; color: white; background: var(--accent); padding: 3px 7px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; flex-shrink: 0; }
+  .err-note { flex: 1; font-size: 12px; color: var(--text); font-weight: 600; }
+  .err-del { background: none; border: none; color: var(--text-mute); cursor: pointer; font-size: 16px; font-weight: 800; }
+  
+  /* PROGRESS BAR */
+  .progress-bar { height: 6px; background: var(--surface-2); border-radius: 100px; overflow: hidden; margin-top: 8px; border: 1px solid var(--border); }
+  .progress-fill { height: 100%; background: var(--grad-hero); border-radius: 100px; transition: width 0.5s; }
+  
+  /* YEAR CARD */
+  .year-card { background: var(--grad-hero); color: white; position: relative; overflow: hidden; }
+  .year-card::after { content: "🎁"; position: absolute; top: -8px; right: 8px; font-size: 70px; opacity: 0.18; line-height: 1; }
+  .year-card .card-label { color: rgba(255,255,255,0.75); }
+  .year-card .card-q { color: white; }
+  .year-card .card-sub { color: rgba(255,255,255,0.92); font-size: 12px; font-weight: 700; }
+  
+  /* BOTTOM SHEET */
+  .sheet { position: fixed; bottom: 0; left: 0; right: 0; max-width: 480px; margin: 0 auto; background: var(--surface-2); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); border-top: 1px solid var(--border); border-radius: 22px 22px 0 0; padding: 6px 12px 18px; z-index: 100; box-shadow: 0 -8px 32px rgba(0,0,0,0.06); }
+  .sheet-handle { width: 36px; height: 4px; background: var(--text-mute); border-radius: 100px; margin: 4px auto 10px; opacity: 0.4; }
+  .qa-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .qa-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 9px 2px; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; transition: all 0.15s; font-family: inherit; color: var(--text); }
+  .qa-btn:active { transform: scale(0.94); }
+  .qa-btn .qa-ic { font-size: 18px; }
+  .qa-btn .qa-lb { font-size: 9px; font-weight: 900; letter-spacing: 0.3px; }
+  
+  /* MODAL */
+  .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); z-index: 200; display: none; align-items: flex-end; }
+  .modal-bg.show { display: flex; }
+  .modal { background: var(--surface-2); backdrop-filter: blur(40px); width: 100%; max-width: 480px; margin: 0 auto; border-radius: 26px 26px 0 0; padding: 20px 16px 28px; border-top: 1px solid var(--border); max-height: 85vh; overflow-y: auto; }
+  .modal h3 { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 4px; color: var(--text); }
+  .modal-sub { font-size: 12px; color: var(--text-soft); margin-bottom: 14px; font-weight: 600; }
+  .theme-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  .theme-card { aspect-ratio: 1.4; border-radius: 16px; padding: 11px; cursor: pointer; position: relative; border: 2px solid transparent; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+  .theme-card.active { border-color: var(--text); }
+  .theme-card .tn { font-size: 14px; font-weight: 900; color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+  .theme-card .te { font-size: 22px; align-self: flex-end; }
+  .theme-card.t-peach { background: linear-gradient(135deg, #ff9472, #ff6b9d); }
+  .theme-card.t-wrapped { background: linear-gradient(135deg, #84fab0, #c084fc 50%, #fe6f5e); }
+  .theme-card.t-costar { background: linear-gradient(135deg, #4a3aff, #d4a5ff); }
+  .theme-card.t-y2k { background: linear-gradient(135deg, #06b6d4, #ec4899 50%, #fbbf24); }
+  .theme-card.t-mint { background: linear-gradient(135deg, #10b981, #facc15); }
+  .theme-card.t-midnight { background: linear-gradient(135deg, #ff5e9c, #b794f6 50%, #7ee7e7); }
+  
+  /* TUTOR FULLSCREEN */
+  .tutor-shell { display: flex; flex-direction: column; height: 70vh; max-height: 600px; }
+  .fac-row { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+  .fac-row::-webkit-scrollbar { display: none; }
+  .fac-chip { flex-shrink: 0; background: var(--surface); border: 1px solid var(--border); padding: 7px 11px; border-radius: 14px; font-size: 11px; font-weight: 800; cursor: pointer; color: var(--text-soft); }
+  .fac-chip.active { background: var(--text); color: var(--bg-1); border-color: var(--text); }
+  .chat-area { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 12px; overflow-y: auto; margin-bottom: 8px; }
+  .chat-msg { margin-bottom: 8px; padding: 9px 12px; border-radius: 14px; max-width: 88%; line-height: 1.45; font-size: 13px; }
+  .chat-msg.user { background: var(--text); color: var(--bg-1); margin-left: auto; border-bottom-right-radius: 4px; }
+  .chat-msg.tutor { background: var(--surface-2); color: var(--text); border-bottom-left-radius: 4px; }
+  .chat-msg.tutor .prof-lbl { font-size: 9px; font-weight: 900; color: var(--accent); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 3px; }
+  .chat-input-row { display: flex; gap: 6px; }
+  .chat-in { flex: 1; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; border-radius: 16px; font-size: 13px; font-family: inherit; }
+  .chat-in:focus { outline: none; border-color: var(--accent); }
+  .send-btn { background: var(--text); color: var(--bg-1); border: none; border-radius: 16px; padding: 8px 14px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: inherit; }
+  
+  /* MILESTONE */
+  .milestone { background: var(--surface); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 16px; padding: 12px; margin-bottom: 7px; display: flex; gap: 10px; align-items: center; }
+  .milestone.done { opacity: 0.55; }
+  .milestone.urgent { border-color: var(--accent); }
+  .ms-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 10px; background: var(--surface-2); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: var(--text); }
+  .milestone.done .ms-num { background: var(--grad-hero); color: white; }
+  .milestone.done .ms-num::before { content: "✓"; }
+  .milestone.done .ms-num .n { display: none; }
+  .ms-info { flex: 1; min-width: 0; }
+  .ms-date { font-size: 9px; font-weight: 900; color: var(--accent); letter-spacing: 0.7px; margin-bottom: 1px; }
+  .ms-title { font-size: 13px; font-weight: 800; color: var(--text); line-height: 1.25; }
+  .ms-desc { font-size: 10px; color: var(--text-soft); margin-top: 2px; font-weight: 600; line-height: 1.4; }
+  .ms-actions { display: flex; gap: 4px; flex-shrink: 0; }
+  
+  /* BACK BUTTON */
+  .back-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); border-radius: 12px; padding: 8px 14px; font-size: 12px; font-weight: 900; cursor: pointer; margin-bottom: 12px; font-family: inherit; box-shadow: var(--shadow); }
+  .detail-h { font-size: 28px; font-weight: 900; letter-spacing: -0.8px; line-height: 1.05; margin-bottom: 4px; color: var(--text); }
+  .detail-h .em { background: var(--grad-hero); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .detail-sub { font-size: 12px; color: var(--text-soft); font-weight: 700; margin-bottom: 16px; }
+  
+  /* SECTION HEADER */
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; margin: 16px 4px 8px; }
+  .sec-head h2 { font-size: 16px; font-weight: 900; color: var(--text); letter-spacing: -0.3px; }
+  .sec-head .see-all { font-size: 11px; font-weight: 900; color: var(--accent); cursor: pointer; }
+  
+  /* PROMPT PILL FOR TUTOR */
+  .quick-row { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+  .quick-chip { background: var(--surface-2); border: 1px solid var(--border); padding: 6px 9px; border-radius: 11px; font-size: 10px; font-weight: 800; color: var(--text-soft); cursor: pointer; }
+  
+  /* MODAL FORM */
+  .modal input, .modal select { width: 100%; background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; padding: 10px 13px; font-size: 13px; color: var(--text); font-family: inherit; margin-bottom: 8px; font-weight: 600; }
+  .modal .actions { display: flex; gap: 7px; margin-top: 8px; }
+  .modal .btn { flex: 1; padding: 11px; border-radius: 12px; font-size: 12px; font-weight: 900; cursor: pointer; border: none; font-family: inherit; }
+  .modal .btn.primary { background: var(--accent); color: white; }
+  .modal .btn.ghost { background: var(--surface-2); color: var(--text); }
+  
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+  .card, .hero-card { animation: fadeUp 0.4s ease-out backwards; }
+  
+  /* DESKTOP */
+  @media (min-width: 768px) {
+    .app { max-width: 540px; padding: 30px 18px 110px; }
+    .sheet { max-width: 540px; }
+    .card { padding: 22px; }
+    .aes-banner { padding: 20px 22px; }
+    .aes-big { font-size: 44px; }
+    .card-q { font-size: 22px; }
+  }
+  
+  /* ============== DISCOVER ============== */
+  .disc-search-wrap { position: relative; margin-bottom: 18px; }
+  .disc-search { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 14px 14px 14px 44px; font-size: 14px; color: var(--text); font-family: inherit; font-weight: 600; box-shadow: var(--shadow); }
+  .disc-search:focus { outline: none; border-color: var(--accent); }
+  .disc-search::placeholder { color: var(--text-mute); }
+  .disc-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 18px; pointer-events: none; }
+  .disc-row { margin-bottom: 20px; }
+  .disc-row-head { font-size: 14px; font-weight: 900; color: var(--text); letter-spacing: -0.3px; margin: 0 4px 10px; }
+  .disc-row-scroll { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding: 4px; margin: -4px; }
+  .disc-row-scroll::-webkit-scrollbar { display: none; }
+  .disc-card { flex-shrink: 0; width: 160px; border-radius: 18px; overflow: hidden; cursor: pointer; box-shadow: var(--shadow); transition: transform 0.2s; position: relative; background: var(--surface); border: 1px solid var(--border); }
+  .disc-card:active { transform: scale(0.96); }
+  .disc-cover { height: 100px; padding: 14px; position: relative; overflow: hidden; display: flex; align-items: flex-end; }
+  .disc-cover::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35)); }
+  .disc-icon { position: absolute; top: 10px; right: 12px; font-size: 26px; opacity: 0.95; }
+  .disc-name { position: relative; z-index: 1; font-size: 14px; font-weight: 900; color: white; letter-spacing: -0.3px; line-height: 1.15; text-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+  .disc-body { padding: 10px 12px 12px; }
+  .disc-inst { font-size: 10px; color: var(--text-mute); font-weight: 800; letter-spacing: 0.3px; margin-bottom: 4px; }
+  .disc-desc { font-size: 11px; color: var(--text-soft); font-weight: 600; line-height: 1.35; margin-bottom: 8px; min-height: 30px; }
+  .disc-meta { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+  .disc-tag { font-size: 9px; font-weight: 800; padding: 3px 6px; border-radius: 6px; background: var(--surface-2); color: var(--text-soft); border: 1px solid var(--border); }
+  .disc-add { width: 100%; background: var(--text); color: var(--bg-1); border: none; border-radius: 10px; padding: 8px; font-size: 11px; font-weight: 900; cursor: pointer; font-family: inherit; transition: opacity 0.15s; }
+  .disc-add:disabled { opacity: 0.5; background: var(--accent); color: white; }
+  .disc-empty { text-align: center; padding: 30px 20px; color: var(--text-soft); font-size: 13px; font-weight: 600; line-height: 1.5; }
+  .disc-results { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px; }
+  .disc-results .disc-card { width: 100%; }
+  .disc-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+  .disc-tab { flex: 1; background: var(--surface-2); border: 1px solid var(--border); padding: 8px; border-radius: 12px; font-size: 11px; font-weight: 900; color: var(--text-soft); cursor: pointer; text-align: center; }
+  .disc-tab.active { background: var(--text); color: var(--bg-1); border-color: var(--text); }
+  .m-card { border: 2px solid var(--accent); }
+  .m-sub { font-size: 12px; color: var(--text-soft); font-weight: 600; margin: 4px 0 8px; line-height: 1.4; }
+  .m-p { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.55; margin: 0 0 8px; }
+  .m-note { font-size: 12px; color: var(--text-soft); line-height: 1.5; margin: 4px 0 10px; }
+  .m-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .m-btn { background: var(--accent); color: #fff; border: 2px solid var(--accent); padding: 9px 14px; border-radius: 100px; font-size: 12px; font-weight: 800; font-family: inherit; cursor: pointer; }
+  .m-btn.alt { background: transparent; color: var(--text); border-color: var(--border); }
+  .m-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+  .m-title { font-size: 15px; font-weight: 900; color: var(--text); line-height: 1.25; }
+  .m-chip { background: var(--bg-2); color: var(--text); border-radius: 100px; padding: 3px 9px; font-size: 10px; font-weight: 800; white-space: nowrap; }
+  .m-chip.hot { background: var(--accent); color: #fff; }
+  .m-chip.late { background: transparent; border: 1px solid var(--border); color: var(--text-mute); }
+  .m-item.won { border-color: #10b981; }
+  .m-elig { font-size: 11px; color: var(--text-soft); font-weight: 600; display: flex; gap: 6px; align-items: center; }
+  .m-l { display: block; font-size: 12px; font-weight: 800; color: var(--text-soft); margin: 12px 0 5px; }
+  .m-hist { font-size: 12px; color: var(--text-soft); line-height: 1.5; padding: 8px 0; border-top: 1px solid var(--border); }
+  .m-chk { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--text); line-height: 1.45; padding: 7px 0; border-top: 1px solid var(--border); }
+  .m-chk input { margin-top: 3px; width: 18px; height: 18px; flex: none; }
+
+  /* v9.1: keep the last card clear of the bottom menu, and size up for laptop screens */
+  .app { padding-bottom: calc(230px + env(safe-area-inset-bottom)); }
+  @media (min-width: 900px) {
+    body { zoom: 1.25; }
+    .app, .sheet, .modal { max-width: 640px; }
+  }
+  @media (min-width: 1500px) {
+    body { zoom: 1.4; }
+  }
+</style>
+</head>
+<body data-theme="peach">
+
+<div class="app" id="app"></div>
+<div class="sheet" id="sheet"></div>
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const NAME = "Vibha";
+const SAT_DATE = "2026-08-22T07:45:00-05:00";
+const AES_DEADLINE = "2026-12-01T23:59:00-06:00";
+const BASELINE_SAT = 0;
+const TARGET_SAT = 0;
+
+const PROMPTS = [
+  "if today were a song lyric, what would it be?",
+  "what would 23-year-old Vibha tell you today?",
+  "one small win nobody noticed?",
+  "what surprised you today?",
+  "describe your day in 3 words",
+  "what would Future-You thank Today-You for?",
+  "if today had a color, what would it be?",
+  "what are you proud of but haven't told anyone?",
+  "who do you want to be by next August?",
+  "what made you laugh today?"
+];
+
+const SUBJECTS = {
+  all:     { name:"✦ All",       icon:"✦",  grad:"--grad-hero" },
+  sat:     { name:"▲ SAT (optional)",       icon:"▲",  prof:"Khan + Bluebook",   inst:"Official", grad:"--grad-sat",     url:"https://www.khanacademy.org/digital-sat" },
+  calc:    { name:"∫ Math for Eng",      icon:"∫",  prof:"David Jerison",     inst:"MIT",      grad:"--grad-calc",    url:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/" },
+  stats:   { hide:true, name:"Σ Stats",     icon:"Σ",  prof:"Joe Blitzstein",    inst:"Harvard",  grad:"--grad-stats",   url:"https://stat110.hsites.harvard.edu/youtube" },
+  lit:     { hide:true, name:"¶ Lit",       icon:"¶",  prof:"Paul H. Fry",       inst:"Yale",     grad:"--grad-lit",     url:"https://oyc.yale.edu/english/engl-300" },
+  env:     { hide:true, name:"⊕ Env",       icon:"⊕",  prof:"Ronald B. Smith",   inst:"Yale",     grad:"--grad-env",     url:"https://oyc.yale.edu/geology-and-geophysics/gg-140" },
+  art:     { hide:true, name:"◐ Art",       icon:"◐",  prof:"Lisa Mazzola",      inst:"MoMA",     grad:"--grad-art",     url:"https://www.coursera.org/learn/modern-art-ideas" },
+  collin:  { name:"🎓 Collin",   icon:"🎓", prof:"Dual Credit",       inst:"Frisco ISD", grad:"--grad-collin",  url:"https://www.friscoisd.org/departments/dual-credit/collin-college/home" },
+  algebra: { hide:true, name:"x² Algebra",  icon:"x²", prof:"Khan Academy",      inst:"Khan",     grad:"--grad-algebra", url:"https://www.khanacademy.org/math/algebra2" }
+};
+
+const LECTURES = {
+  sat: [
+    {t:"Bluebook Test #1 · Diagnostic", m:"Test · 2h14m · find weaknesses", u:"https://bluebook.collegeboard.org"},
+    {t:"Khan: Heart of Algebra", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Khan: Linear Functions", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Bluebook Test #2", m:"Test · 2h14m", u:"https://bluebook.collegeboard.org"},
+    {t:"Khan: Quadratics", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Khan: Polynomials", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Bluebook Test #3", m:"Test · 2h14m", u:"https://bluebook.collegeboard.org"},
+    {t:"Khan: Exponentials", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Khan: R&W Standard English", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Bluebook Test #4", m:"Test · 2h14m", u:"https://bluebook.collegeboard.org"},
+    {t:"Khan: R&W Transitions", m:"Unit · 90min", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Bluebook Test #5", m:"Test · 2h14m", u:"https://bluebook.collegeboard.org"},
+    {t:"Bluebook Test #6 · Dress rehearsal", m:"Test · 2h14m", u:"https://bluebook.collegeboard.org"},
+    {t:"Error-Log Redrill: weak categories", m:"Custom · 2h", u:"https://www.khanacademy.org/digital-sat"},
+    {t:"Mock from Princeton Review", m:"Test · 2h14m", u:"https://www.princetonreview.com/college-prep/sat-test-prep"},
+    {t:"🎯 SAT TEST DAY · Aug 22", m:"REAL · 7:45 AM check-in", u:"https://bluebook.collegeboard.org"}
+  ],
+  calc: [
+    {t:"Rate of Change", m:"Lec 1 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-1-derivatives/"},
+    {t:"Limits & Continuity", m:"Lec 2 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-2-limits-and-continuity/"},
+    {t:"Derivatives", m:"Lec 3 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-3-derivatives-of-products-quotients-sine-and-cosine/"},
+    {t:"Chain Rule", m:"Lec 4 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-4-chain-rule-and-higher-derivatives/"},
+    {t:"Implicit Differentiation", m:"Lec 5 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-5-implicit-differentiation-inverses/"},
+    {t:"Exponential & Log", m:"Lec 6 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-6-exponential-and-log/"},
+    {t:"Hyperbolic Functions", m:"Lec 7 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-7-hyperbolic-functions/"},
+    {t:"Linear & Quadratic Approx", m:"Lec 9 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-9-linear-and-quadratic-approximations/"},
+    {t:"Curve Sketching", m:"Lec 10 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-10-curve-sketching/"},
+    {t:"Related Rates", m:"Lec 12 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-12-related-rates/"},
+    {t:"Definite Integrals", m:"Lec 18 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-18-definite-integrals/"},
+    {t:"Fundamental Theorem", m:"Lec 20 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-20-second-fundamental-theorem/"},
+    {t:"Apps of Integration", m:"Lec 21 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-21-applications-to-logarithms-and-geometry/"},
+    {t:"Methods of Integration", m:"Lec 29 · 50min", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/resources/lecture-29-partial-fractions/"},
+    {t:"Volumes", m:"Lec 24", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/video_galleries/video-lectures/"},
+    {t:"Final Review", m:"Lec 36+", u:"https://ocw.mit.edu/courses/18-01-single-variable-calculus-fall-2006/video_galleries/video-lectures/"}
+  ],
+  stats: [
+    {t:"Probability & Counting", m:"Lec 1 · 47min", u:"https://www.youtube.com/watch?v=KbB0FjPg0mw"},
+    {t:"Story Proofs, Axioms", m:"Lec 2 · 47min", u:"https://www.youtube.com/watch?v=FJd_1H3rZGg"},
+    {t:"Birthday Problem", m:"Lec 3 · 47min", u:"https://www.youtube.com/watch?v=LZ5Wergp_PA"},
+    {t:"Conditional Probability", m:"Lec 4 · 47min", u:"https://www.youtube.com/watch?v=P7NE4WF8j-Q"},
+    {t:"Random Variables", m:"Lec 5 · 47min", u:"https://www.youtube.com/watch?v=fDcjhAKuhqQ"},
+    {t:"Monty Hall, Simpson's", m:"Lec 6 · 47min", u:"https://www.youtube.com/watch?v=fDcjhAKuhqQ"},
+    {t:"Independence", m:"Lec 9 · 47min", u:"https://www.youtube.com/watch?v=LX2q356N2rU"},
+    {t:"Poisson Distribution", m:"Lec 11 · 47min", u:"https://www.youtube.com/watch?v=TD1N4hxqMzY"},
+    {t:"Universality of Uniform", m:"Lec 13 · 47min", u:"https://www.youtube.com/watch?v=ywvjkqoZ-ms"},
+    {t:"Midterm Review", m:"Lec 15 · 47min", u:"https://www.youtube.com/watch?v=72QjzHnYvL0"},
+    {t:"MGFs", m:"Lec 17 · 47min", u:"https://www.youtube.com/watch?v=N8O6zd6vTZ8"},
+    {t:"Joint Distributions", m:"Lec 19 · 47min", u:"https://www.youtube.com/watch?v=J70dP_AECzQ"},
+    {t:"Covariance", m:"Lec 21 · 47min", u:"https://www.youtube.com/watch?v=IujCYxtpszU"},
+    {t:"Beta Distribution", m:"Lec 23 · 47min", u:"https://www.youtube.com/watch?v=UZjlBQbV1KU"},
+    {t:"CLT, LLN", m:"Lec 29 · 47min", u:"https://www.youtube.com/watch?v=OprNqnHsVIA"},
+    {t:"A Look Ahead", m:"Lec 34 · 47min", u:"https://www.youtube.com/watch?v=ChS3K2O-h7o"}
+  ],
+  lit: Array.from({length:16}, (_, i) => {
+    const lecs=[1,2,3,4,5,6,7,8,9,10,11,13,15,19,23,26];
+    const titles=["Introduction","Introduction (cont.)","Hermeneutic Circle","Configurative Reading","Autonomous Text","New Criticism","Russian Formalism","Semiotics","Linguistics","Deconstruction","Foucault","Freud & Fiction","Feminist Tradition","New Historicism","Queer Theory","Reflections"];
+    return {t: titles[i], m: `Lec ${lecs[i]} · 47min`, u: `https://oyc.yale.edu/english/engl-300/lecture-${lecs[i]}`};
+  }),
+  env: Array.from({length:16}, (_, i) => {
+    const lecs=[1,2,3,4,5,6,7,8,9,10,14,16,19,21,23,36];
+    const titles=["Atmosphere & Ocean","Retaining Atmosphere","Solar Radiation","Greenhouse Effect","Convection","Hadley Circulation","Coriolis & Jet","Mid-lat Cyclones","Thunderstorms","Hurricanes","Ocean Bathymetry","Ocean Circulation","El Niño","Glaciers","Ice Ages","Global Warming"];
+    return {t: titles[i], m: `Lec ${lecs[i]}`, u: `https://oyc.yale.edu/geology-and-geophysics/gg-140/lecture-${lecs[i]}`};
+  }),
+  art: [
+    {t:"M1: Places · Intro", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M1: Starry Night", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M1: Mondrian, Matta-Clark", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M2: Art & Identity Intro", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M2: Ligon, Sherman", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M2: Self in Context", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M3: Transforming Objects", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M3: Duchamp, Oldenburg", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M3: Material Inquiry", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M4: Art & Society", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M4: Picasso's Guernica", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"M4: Activist Art", m:"MoMA · 2h", u:"https://www.coursera.org/learn/modern-art-ideas"},
+    {t:"SI: Define Inquiry", m:"CB Portfolio", u:"https://apstudents.collegeboard.org/art-design-program/sustained-investigation"},
+    {t:"SI: 5 Images", m:"CB Portfolio", u:"https://apstudents.collegeboard.org/art-design-program/sustained-investigation"},
+    {t:"SI: 10 Images", m:"CB Portfolio", u:"https://apstudents.collegeboard.org/art-design-program/sustained-investigation"},
+    {t:"SI: 15 Images Final", m:"CB Portfolio", u:"https://apstudents.collegeboard.org/art-design-program/sustained-investigation"}
+  ],
+  algebra: [
+    {t:"Polynomial Arithmetic", m:"Unit 1 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Complex Numbers", m:"Unit 2 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Factorization", m:"Unit 3 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Polynomial Division", m:"Unit 4 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Polynomial Graphs", m:"Unit 5 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Rational Exponents", m:"Unit 6 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Exponential Models", m:"Unit 7 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Logarithms", m:"Unit 8 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Function Transformations", m:"Unit 9 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Equations Review", m:"Unit 10 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Trigonometry", m:"Unit 11 · 2h", u:"https://www.khanacademy.org/math/algebra2"},
+    {t:"Modeling", m:"Unit 12 · 2h", u:"https://www.khanacademy.org/math/algebra2"}
+  ],
+  collin: [
+    {t:"ENGL 1301 · Composition I", m:"Fall 2026 · 3 cr", u:"https://www.collin.edu/"},
+    {t:"HIST 1301 · US History I", m:"Fall 2026 · 3 cr", u:"https://www.collin.edu/"},
+    {t:"ENGL 1302 · Composition II", m:"Spring 2027 · 3 cr", u:"https://www.collin.edu/"},
+    {t:"HIST 1302 · US History II", m:"Spring 2027 · 3 cr", u:"https://www.collin.edu/"},
+    {t:"GOVT 2306 · Texas Gov", m:"Spring 2027 · 3 cr", u:"https://www.collin.edu/"},
+    {t:"⚠ Watch 70% floor in every class", m:"Below 70% blocks future dual credit in that subject", u:""},
+    {t:"⚠ Order transcript by Nov 15, 2026", m:"Order through Workday, 1-2 weeks delivery", u:"https://www.collin.edu/transcripts/"},
+    {t:"⚠ Jan 16, 2027 Spring HARD STOP", m:"$100 late fee after", u:""},
+    {t:"⚠ Feb 3, 2027 CENSUS DATE", m:"Last drop date · C/D/F is PERMANENT", u:""}
+  ]
+};
+
+const LIVE_SESSIONS = [
+  { t:"Schoolhouse.world · SAT Bootcamp", o:"Sal Khan's free live SAT cohort", g:"--grad-sat", i:"▲", u:"https://schoolhouse.world/sat-bootcamp" },
+  { t:"Schoolhouse.world · AP Calc", o:"Free peer tutoring · live Zoom", g:"--grad-calc", i:"∫", u:"https://schoolhouse.world/topics/ap-calc" },
+  { t:"Schoolhouse.world · AP Stats", o:"Free live group tutoring", g:"--grad-stats", i:"Σ", u:"https://schoolhouse.world/topics/ap-statistics" },
+  { t:"Khan SAT + Khanmigo AI", o:"Official CB partnership + AI", g:"--grad-sat", i:"▲", u:"https://www.khanacademy.org/digital-sat" },
+  { t:"Schoolhouse.world · AP English", o:"Rhetorical analysis + FRQ", g:"--grad-lit", i:"¶", u:"https://schoolhouse.world/topics/ap-english-language" },
+  { t:"Schoolhouse.world · AP Env Sci", o:"Live APES tutoring", g:"--grad-env", i:"⊕", u:"https://schoolhouse.world/topics/ap-environmental-science" },
+  { t:"Fiveable AP Cram Streams", o:"Free live AP review streams", g:"--grad-stats", i:"★", u:"https://library.fiveable.me/" },
+  { t:"Frisco Library · Brainfuse", o:"24/7 free live tutor (library card)", g:"--grad-lit", i:"📚", u:"https://www.friscolibrary.com/" },
+  { t:"MoMA Free Programs", o:"Virtual studio + artist talks", g:"--grad-art", i:"◐", u:"https://www.moma.org/calendar/" },
+  { t:"Frisco RAIL (SchoolWorld)", o:"FISD tutoring via Canvas", g:"--grad-art", i:"🜨", u:"https://fisd.instructure.com/" }
+];
+
+const DAILY_Q = [
+  { q:"A car drives 60 mph for 2.5 hours. How far does it go?", opts:["120 mi","150 mi","180 mi","200 mi"], correct:1, exp:"Distance = speed × time = 60 × 2.5 = 150. <strong>Units first.</strong> Engineers check units before numbers." },
+  { q:"What is the derivative of x³ at x = 2?", opts:["6","8","12","16"], correct:2, exp:"d/dx x³ = 3x². At x = 2 that is 3 × 4 = 12. <strong>Power rule.</strong>" },
+  { q:"A 10 N force acts on a 2 kg mass. What is its acceleration?", opts:["2 m/s²","5 m/s²","8 m/s²","20 m/s²"], correct:1, exp:"F = ma, so a = 10 / 2 = 5 m/s². <strong>Newton's second law.</strong>" },
+  { q:"Solve 2x² = 50.", opts:["5","±5","25","±25"], correct:1, exp:"x² = 25, so x = 5 or −5. <strong>Don't forget the negative root.</strong>" },
+  { q:"In Python, what does len([1, 2, 3]) * 2 give?", opts:["3","5","6","[1,2,3,1,2,3]"], correct:2, exp:"len is 3, times 2 is 6. <strong>Read what each piece returns.</strong>" },
+  { q:"A 5 kg object moves at 4 m/s. Its kinetic energy is?", opts:["20 J","40 J","80 J","100 J"], correct:1, exp:"KE = ½mv² = 0.5 × 5 × 16 = 40 J. <strong>Velocity is squared.</strong>" },
+  { q:"What is the integral of 2x dx from 0 to 3?", opts:["6","9","12","18"], correct:1, exp:"The antiderivative is x². 3² − 0² = 9. <strong>Fundamental theorem of calculus.</strong>" },
+  { q:"A 20 N force pushes 3 m from a pivot, at right angles. The torque is?", opts:["6.7 N·m","23 N·m","60 N·m","120 N·m"], correct:2, exp:"Torque = force × distance = 20 × 3 = 60 N·m. <strong>Lever arms drive machine design.</strong>" }
+];
+
+const THEMES = [
+  { id:"peach", name:"Peach", emoji:"🌅", cls:"t-peach" },
+  { id:"wrapped", name:"Wrapped", emoji:"🎁", cls:"t-wrapped" },
+  { id:"costar", name:"Co-Star", emoji:"⭐", cls:"t-costar" },
+  { id:"y2k", name:"Y2K", emoji:"💿", cls:"t-y2k" },
+  { id:"mint", name:"Mint", emoji:"🌿", cls:"t-mint" },
+  { id:"midnight", name:"Midnight", emoji:"🌙", cls:"t-midnight" }
+];
+
+let AES_MILESTONES = [];
+
+// ============== DISCOVERY CATALOG ==============
+// Curated by category. Each course has 12 real free lectures from MIT/Harvard/Yale/Khan/Coursera/edX/YouTube.
+const CATALOG = {
+  "🔥 trending for class of 2027": [
+    {id:"physics", name:"AP Physics 1", inst:"MIT (Walter Lewin)", icon:"⚡", grad:"linear-gradient(135deg,#4a90e2,#7b68ee)", diff:"Intermediate", hrs:"22h", desc:"The legendary MIT 8.01 — Lewin's chalkboard pendulums.", lectures:[
+      {t:"Powers of 10, Units, Dimensions",m:"Lec 1 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"1D Kinematics",m:"Lec 2 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Vectors",m:"Lec 3 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"3D Kinematics",m:"Lec 4 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Circular Motion",m:"Lec 5 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Newton's Laws",m:"Lec 6 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Weight, Free Fall",m:"Lec 7 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Friction",m:"Lec 8 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Hooke's Law, SHM",m:"Lec 10 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Work, Energy, Power",m:"Lec 11 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Momentum",m:"Lec 15 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"},
+      {t:"Angular Momentum",m:"Lec 20 · 49min",u:"https://ocw.mit.edu/courses/8-01-physics-i-classical-mechanics-fall-1999/video_galleries/video-lectures/"}
+    ]},
+    {id:"cs50", name:"CS50: Intro to CompSci", inst:"Harvard (David Malan)", icon:"💻", grad:"linear-gradient(135deg,#e54b4b,#ffa07a)", diff:"Beginner", hrs:"30h", desc:"Most-watched CS course on Earth. Real Harvard credit available.", lectures:[
+      {t:"Lecture 0: Scratch",m:"~2h · YouTube",u:"https://cs50.harvard.edu/x/2024/weeks/0/"},
+      {t:"Lecture 1: C",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/1/"},
+      {t:"Lecture 2: Arrays",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/2/"},
+      {t:"Lecture 3: Algorithms",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/3/"},
+      {t:"Lecture 4: Memory",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/4/"},
+      {t:"Lecture 5: Data Structures",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/5/"},
+      {t:"Lecture 6: Python",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/6/"},
+      {t:"Lecture 7: SQL",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/7/"},
+      {t:"Lecture 8: HTML/CSS/JS",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/8/"},
+      {t:"Lecture 9: Flask",m:"~2h",u:"https://cs50.harvard.edu/x/2024/weeks/9/"},
+      {t:"Lecture 10: Ethics",m:"~1h",u:"https://cs50.harvard.edu/x/2024/weeks/10/"},
+      {t:"Final Project",m:"Self-directed",u:"https://cs50.harvard.edu/x/2024/project/"}
+    ]},
+    {id:"psych", name:"Intro to Psychology", inst:"Yale (Paul Bloom)", icon:"🧠", grad:"linear-gradient(135deg,#8e44ad,#f39c12)", diff:"Beginner", hrs:"20h", desc:"Yale PSYC 110 — why people do what they do.", lectures:[
+      {t:"What is Psychology?",m:"Lec 1",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-1"},
+      {t:"Foundations: Freud",m:"Lec 2",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-2"},
+      {t:"Foundations: Skinner",m:"Lec 3",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-3"},
+      {t:"Brain & Neurons",m:"Lec 4",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-4"},
+      {t:"Cognitive Development",m:"Lec 7",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-7"},
+      {t:"Language",m:"Lec 8",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-8"},
+      {t:"Sex",m:"Lec 9",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-9"},
+      {t:"Evolution & Rationality",m:"Lec 10",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-10"},
+      {t:"Emotion",m:"Lec 12",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-12"},
+      {t:"Morality",m:"Lec 14",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-14"},
+      {t:"Sleep & Dreams",m:"Lec 16",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-16"},
+      {t:"Happiness",m:"Lec 18",u:"https://oyc.yale.edu/psychology/psyc-110/lecture-18"}
+    ]},
+    {id:"philo-death", name:"Philosophy: Death", inst:"Yale (Shelly Kagan)", icon:"💭", grad:"linear-gradient(135deg,#2c3e50,#bdc3c7)", diff:"Intermediate", hrs:"22h", desc:"Yale PHIL 176. Kagan in his red sneakers on a desk — iconic.", lectures:[
+      {t:"Course Introduction",m:"Lec 1",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-1"},
+      {t:"The Nature of Persons",m:"Lec 2",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-2"},
+      {t:"Dualism vs Physicalism",m:"Lec 3",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-3"},
+      {t:"Body Theory",m:"Lec 5",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-5"},
+      {t:"Personality View",m:"Lec 7",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-7"},
+      {t:"What Matters?",m:"Lec 9",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-9"},
+      {t:"The Nature of Death",m:"Lec 11",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-11"},
+      {t:"Deprivation Account",m:"Lec 14",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-14"},
+      {t:"Immortality",m:"Lec 16",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-16"},
+      {t:"Fear of Death",m:"Lec 19",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-19"},
+      {t:"Suicide",m:"Lec 23",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-23"},
+      {t:"Final Reflection",m:"Lec 26",u:"https://oyc.yale.edu/philosophy/phil-176/lecture-26"}
+    ]}
+  ],
+  "🌍 languages": [
+    {id:"spanish", name:"Spanish", inst:"Duolingo + Coffee Break", icon:"🇪🇸", grad:"linear-gradient(135deg,#ff6b35,#ffd23f)", diff:"Beginner", hrs:"Flexible", desc:"Duolingo daily + Coffee Break podcast = real fluency path.", lectures:[
+      {t:"Duolingo Spanish Unit 1",m:"~3 weeks",u:"https://www.duolingo.com/course/es/en/Learn-Spanish"},
+      {t:"Coffee Break Spanish: Season 1",m:"40 episodes",u:"https://radiolingua.com/coffeebreakspanish/"},
+      {t:"Duolingo Unit 2-3",m:"~3 weeks",u:"https://www.duolingo.com/course/es/en/Learn-Spanish"},
+      {t:"Easy Spanish street videos",m:"YouTube",u:"https://www.youtube.com/c/EasySpanish"},
+      {t:"Coffee Break Season 2",m:"40 episodes",u:"https://radiolingua.com/coffeebreakspanish/"},
+      {t:"Duolingo Unit 4-5",m:"~3 weeks",u:"https://www.duolingo.com/course/es/en/Learn-Spanish"},
+      {t:"Dreaming Spanish (input)",m:"YouTube",u:"https://www.dreamingspanish.com/"},
+      {t:"Coffee Break Season 3",m:"40 episodes",u:"https://radiolingua.com/coffeebreakspanish/"},
+      {t:"Spanish with Paul (grammar)",m:"YouTube",u:"https://www.youtube.com/c/LearnSpanishwithPaul"},
+      {t:"News in Slow Spanish",m:"Podcast",u:"https://www.newsinslowspanish.com/"},
+      {t:"Duolingo Unit 6+",m:"Ongoing",u:"https://www.duolingo.com/course/es/en/Learn-Spanish"},
+      {t:"Talk with a tutor (italki)",m:"Optional paid",u:"https://www.italki.com/"}
+    ]},
+    {id:"french", name:"French", inst:"Duolingo + Coffee Break", icon:"🇫🇷", grad:"linear-gradient(135deg,#0055a4,#ef4135)", diff:"Beginner", hrs:"Flexible", desc:"Same proven stack, en français.", lectures:[
+      {t:"Duolingo French Unit 1",m:"~3 weeks",u:"https://www.duolingo.com/course/fr/en/Learn-French"},
+      {t:"Coffee Break French S1",m:"40 episodes",u:"https://radiolingua.com/coffeebreakfrench/"},
+      {t:"Duolingo Unit 2-3",m:"~3 weeks",u:"https://www.duolingo.com/course/fr/en/Learn-French"},
+      {t:"Easy French street videos",m:"YouTube",u:"https://www.youtube.com/c/EasyFrench"},
+      {t:"Coffee Break S2",m:"40 episodes",u:"https://radiolingua.com/coffeebreakfrench/"},
+      {t:"Duolingo Unit 4-5",m:"~3 weeks",u:"https://www.duolingo.com/course/fr/en/Learn-French"},
+      {t:"InnerFrench podcast",m:"Intermediate",u:"https://innerfrench.com/"},
+      {t:"Coffee Break S3",m:"40 episodes",u:"https://radiolingua.com/coffeebreakfrench/"},
+      {t:"Français Authentique",m:"YouTube",u:"https://www.francaisauthentique.com/"},
+      {t:"News in Slow French",m:"Podcast",u:"https://www.newsinslowfrench.com/"},
+      {t:"Duolingo Unit 6+",m:"Ongoing",u:"https://www.duolingo.com/course/fr/en/Learn-French"},
+      {t:"Watch French film (Amélie)",m:"Film",u:"https://www.imdb.com/title/tt0211915/"}
+    ]},
+    {id:"hindi", name:"Hindi", inst:"Multiple sources", icon:"🇮🇳", grad:"linear-gradient(135deg,#ff9933,#138808)", diff:"Beginner", hrs:"Flexible", desc:"Read/write Devanagari, daily speak. Family-roots learning.", lectures:[
+      {t:"Devanagari alphabet (Drops)",m:"App · 2 weeks",u:"https://languagedrops.com/language/learn-hindi"},
+      {t:"HindiPod101 Absolute Beginner",m:"Free episodes",u:"https://www.hindipod101.com/"},
+      {t:"Learn Hindi w/Anil Mahato",m:"YouTube",u:"https://www.youtube.com/c/LearnHindiWithAnilMahato"},
+      {t:"Duolingo Hindi tree",m:"~3 weeks",u:"https://www.duolingo.com/course/hi/en/Learn-Hindi"},
+      {t:"Hindi 101 Series",m:"YouTube",u:"https://www.youtube.com/results?search_query=hindi+101+playlist"},
+      {t:"Hindi Pandit",m:"YouTube",u:"https://www.youtube.com/c/HindiPandit"},
+      {t:"Reading children's books",m:"e.g. Akbar-Birbal",u:"https://www.epustakalay.com/"},
+      {t:"Bollywood w/subs (RRR, 3 Idiots)",m:"Film",u:"https://www.imdb.com/list/ls004021610/"},
+      {t:"Coffee Break Hindi (if available)",m:"Podcast",u:"https://radiolingua.com/"},
+      {t:"Daily speak w/family",m:"Practice",u:""},
+      {t:"News in slow Hindi",m:"Podcast",u:"https://www.youtube.com/results?search_query=slow+hindi+news"},
+      {t:"Write 1 paragraph daily",m:"Practice",u:""}
+    ]},
+    {id:"japanese", name:"Japanese", inst:"Tofugu + Duolingo", icon:"🇯🇵", grad:"linear-gradient(135deg,#bc002d,#ffffff)", diff:"Beginner", hrs:"Flexible", desc:"Hiragana → Katakana → Kanji → real reading. Slowest payoff, highest reward.", lectures:[
+      {t:"Hiragana in 1 day (Tofugu)",m:"3h",u:"https://www.tofugu.com/japanese/learn-hiragana/"},
+      {t:"Katakana in 1 day (Tofugu)",m:"3h",u:"https://www.tofugu.com/japanese/learn-katakana/"},
+      {t:"Duolingo JP Unit 1",m:"~3 weeks",u:"https://www.duolingo.com/course/ja/en/Learn-Japanese"},
+      {t:"Cure Dolly Organic Japanese",m:"YouTube",u:"https://www.youtube.com/c/OrganicJapanesewithCureDolly"},
+      {t:"WaniKani Level 1-3 (Kanji)",m:"6 weeks free",u:"https://www.wanikani.com/"},
+      {t:"Duolingo Unit 2-3",m:"~3 weeks",u:"https://www.duolingo.com/course/ja/en/Learn-Japanese"},
+      {t:"Tokini Andy Genki",m:"YouTube",u:"https://www.youtube.com/c/TokiniAndy"},
+      {t:"NHK News Web Easy",m:"Daily",u:"https://www3.nhk.or.jp/news/easy/"},
+      {t:"Japanese Pod 101",m:"Podcast",u:"https://www.japanesepod101.com/"},
+      {t:"Read 1 manga panel/day",m:"Practice",u:""},
+      {t:"Watch anime w/JP subs",m:"Practice",u:""},
+      {t:"JLPT N5 prep",m:"Goal",u:"https://www.jlpt.jp/e/"}
+    ]}
+  ],
+  "🔬 stem deep-dive": [
+    {id:"bio", name:"Intro to Biology", inst:"MIT (Eric Lander)", icon:"🧬", grad:"linear-gradient(135deg,#10b981,#34d399)", diff:"Intermediate", hrs:"36h", desc:"Lander led the Human Genome Project. Bio from the top.", lectures:[
+      {t:"Biochemistry 1: Water, pH",m:"Lec 1",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Biochemistry 2: Proteins",m:"Lec 2",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Enzymes & Metabolism",m:"Lec 4",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"DNA structure",m:"Lec 5",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"DNA replication",m:"Lec 6",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Transcription",m:"Lec 7",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Translation",m:"Lec 8",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Mendelian genetics",m:"Lec 9",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Gene Regulation",m:"Lec 11",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Cell Cycle",m:"Lec 14",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Cancer",m:"Lec 17",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"},
+      {t:"Immunology",m:"Lec 20",u:"https://ocw.mit.edu/courses/7-01sc-fundamentals-of-biology-fall-2011/"}
+    ]},
+    {id:"chem", name:"Principles of Chemistry", inst:"MIT (Catherine Drennan)", icon:"⚗️", grad:"linear-gradient(135deg,#06b6d4,#3b82f6)", diff:"Intermediate", hrs:"30h", desc:"MIT 5.111 — clear, energetic, exam-grade.", lectures:[
+      {t:"The Atom",m:"Lec 1",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Quantum Mechanics",m:"Lec 2",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Wave-Particle Duality",m:"Lec 3",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Hydrogen Atom",m:"Lec 4",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Periodic Trends",m:"Lec 6",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Covalent Bonds",m:"Lec 8",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Lewis Structures",m:"Lec 10",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"VSEPR / Molecular Geometry",m:"Lec 13",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Thermodynamics",m:"Lec 18",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Chemical Equilibrium",m:"Lec 22",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Acids & Bases",m:"Lec 25",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"},
+      {t:"Kinetics",m:"Lec 30",u:"https://ocw.mit.edu/courses/5-111sc-principles-of-chemical-science-fall-2014/"}
+    ]},
+    {id:"linalg", name:"Linear Algebra", inst:"MIT (Gilbert Strang)", icon:"📐", grad:"linear-gradient(135deg,#7c3aed,#a78bfa)", diff:"Intermediate", hrs:"24h", desc:"Strang is the gold standard. Used by every data scientist alive.", lectures:[
+      {t:"The Geometry of Linear Eqns",m:"Lec 1",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Elimination with Matrices",m:"Lec 2",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Matrix Multiplication",m:"Lec 3",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"A = LU Factorization",m:"Lec 4",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Column Space, Nullspace",m:"Lec 6",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Four Subspaces",m:"Lec 10",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Orthogonality",m:"Lec 14",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Projections",m:"Lec 15",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Determinants",m:"Lec 18",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Eigenvalues & Eigenvectors",m:"Lec 21",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"SVD",m:"Lec 29",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"},
+      {t:"Final Review",m:"Lec 34",u:"https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/"}
+    ]}
+  ],
+  "📚 humanities": [
+    {id:"hist-eu", name:"European Civilization 1648-1945", inst:"Yale (John Merriman)", icon:"🏛", grad:"linear-gradient(135deg,#92400e,#fbbf24)", diff:"Intermediate", hrs:"22h", desc:"Storyteller's history of modern Europe.", lectures:[
+      {t:"Introduction",m:"Lec 1",u:"https://oyc.yale.edu/history/hist-202/lecture-1"},
+      {t:"Absolutism & the State",m:"Lec 2",u:"https://oyc.yale.edu/history/hist-202/lecture-2"},
+      {t:"Dutch Republic",m:"Lec 3",u:"https://oyc.yale.edu/history/hist-202/lecture-3"},
+      {t:"Peter the Great",m:"Lec 4",u:"https://oyc.yale.edu/history/hist-202/lecture-4"},
+      {t:"Enlightenment",m:"Lec 5",u:"https://oyc.yale.edu/history/hist-202/lecture-5"},
+      {t:"French Revolution",m:"Lec 7",u:"https://oyc.yale.edu/history/hist-202/lecture-7"},
+      {t:"Napoleon",m:"Lec 8",u:"https://oyc.yale.edu/history/hist-202/lecture-8"},
+      {t:"Industrial Revolution",m:"Lec 9",u:"https://oyc.yale.edu/history/hist-202/lecture-9"},
+      {t:"Cities",m:"Lec 11",u:"https://oyc.yale.edu/history/hist-202/lecture-11"},
+      {t:"1848 Revolutions",m:"Lec 13",u:"https://oyc.yale.edu/history/hist-202/lecture-13"},
+      {t:"World War I",m:"Lec 18",u:"https://oyc.yale.edu/history/hist-202/lecture-18"},
+      {t:"World War II",m:"Lec 22",u:"https://oyc.yale.edu/history/hist-202/lecture-22"}
+    ]},
+    {id:"music", name:"Music Theory", inst:"Coursera (Berklee)", icon:"🎵", grad:"linear-gradient(135deg,#ec4899,#a855f7)", diff:"Beginner", hrs:"15h", desc:"Read, write, hear music. Berklee fundamentals (audit free).", lectures:[
+      {t:"Pitch & Notes",m:"Wk 1",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Major Scales",m:"Wk 1",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Rhythm Basics",m:"Wk 2",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Time Signatures",m:"Wk 2",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Minor Scales",m:"Wk 3",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Intervals",m:"Wk 3",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Triads & Chords",m:"Wk 4",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Chord Progressions",m:"Wk 4",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Cadences",m:"Wk 5",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Modes",m:"Wk 5",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Form & Phrasing",m:"Wk 6",u:"https://www.coursera.org/learn/edinburgh-music-theory"},
+      {t:"Composing a piece",m:"Wk 6 final",u:"https://www.coursera.org/learn/edinburgh-music-theory"}
+    ]},
+    {id:"philo-justice", name:"Justice", inst:"Harvard (Michael Sandel)", icon:"⚖️", grad:"linear-gradient(135deg,#1e40af,#7c3aed)", diff:"Intermediate", hrs:"24h", desc:"Sandel's legendary Harvard course. Trolley problems live.", lectures:[
+      {t:"The Moral Side of Murder",m:"Lec 1 · 56min",u:"https://www.youtube.com/watch?v=kBdfcR-8hEY"},
+      {t:"Putting a Price Tag on Life",m:"Lec 2",u:"https://www.youtube.com/results?search_query=sandel+justice+lecture+2"},
+      {t:"Free to Choose? (Libertarianism)",m:"Lec 3",u:"https://www.youtube.com/results?search_query=sandel+justice+libertarianism"},
+      {t:"This Land is My Land (Locke)",m:"Lec 4",u:"https://www.youtube.com/results?search_query=sandel+justice+locke"},
+      {t:"Hired Guns? (Markets & Morals)",m:"Lec 5",u:"https://www.youtube.com/results?search_query=sandel+justice+markets"},
+      {t:"Mind Your Motive (Kant)",m:"Lec 6",u:"https://www.youtube.com/results?search_query=sandel+justice+kant"},
+      {t:"A Lesson in Lying",m:"Lec 7",u:"https://www.youtube.com/results?search_query=sandel+justice+lying"},
+      {t:"What's a Fair Start?",m:"Lec 8",u:"https://www.youtube.com/results?search_query=sandel+justice+fair+start"},
+      {t:"Affirmative Action",m:"Lec 9",u:"https://www.youtube.com/results?search_query=sandel+justice+affirmative+action"},
+      {t:"Good Citizen (Aristotle)",m:"Lec 10",u:"https://www.youtube.com/results?search_query=sandel+justice+aristotle"},
+      {t:"Community & Loyalty",m:"Lec 11",u:"https://www.youtube.com/results?search_query=sandel+justice+community"},
+      {t:"Debating Same-Sex Marriage",m:"Lec 12",u:"https://www.youtube.com/results?search_query=sandel+justice+marriage"}
+    ]}
+  ],
+  "💼 future skills": [
+    {id:"econ", name:"Microeconomics", inst:"MIT (Jonathan Gruber)", icon:"📊", grad:"linear-gradient(135deg,#059669,#0891b2)", diff:"Beginner", hrs:"24h", desc:"How markets, prices, and incentives really work.", lectures:[
+      {t:"Intro & Supply/Demand",m:"Lec 1",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Preferences & Utility",m:"Lec 2",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Demand Curves",m:"Lec 5",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Production",m:"Lec 7",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Costs",m:"Lec 8",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Competition",m:"Lec 10",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Monopoly",m:"Lec 14",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Game Theory",m:"Lec 17",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Externalities",m:"Lec 19",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Public Goods",m:"Lec 20",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Inequality",m:"Lec 22",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"},
+      {t:"Health Care",m:"Lec 24",u:"https://ocw.mit.edu/courses/14-01-principles-of-microeconomics-fall-2018/"}
+    ]},
+    {id:"finlit", name:"Personal Finance", inst:"Khan Academy", icon:"💰", grad:"linear-gradient(135deg,#16a34a,#84cc16)", diff:"Beginner", hrs:"12h", desc:"Budgeting, taxes, credit, investing — what school doesn't teach.", lectures:[
+      {t:"Budgeting",m:"Unit 1",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Saving",m:"Unit 2",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Interest & Compounding",m:"Unit 3",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Investing Basics",m:"Unit 4",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Stocks & Bonds",m:"Unit 5",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Credit Cards",m:"Unit 6",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Loans (incl. student)",m:"Unit 7",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Taxes",m:"Unit 8",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Insurance",m:"Unit 9",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Retirement",m:"Unit 10",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Buying a Car",m:"Unit 11",u:"https://www.khanacademy.org/college-careers-more/personal-finance"},
+      {t:"Buying a Home",m:"Unit 12",u:"https://www.khanacademy.org/college-careers-more/personal-finance"}
+    ]},
+    {id:"datasci", name:"Data Science", inst:"Harvard (PH125)", icon:"📈", grad:"linear-gradient(135deg,#0ea5e9,#22d3ee)", diff:"Intermediate", hrs:"40h", desc:"R, statistics, real datasets. PH125 is the gold-standard data science path.", lectures:[
+      {t:"R Basics",m:"Wk 1",u:"https://www.edx.org/course/data-science-r-basics"},
+      {t:"Visualization",m:"Wk 2",u:"https://www.edx.org/course/data-science-visualization"},
+      {t:"Probability",m:"Wk 3",u:"https://www.edx.org/course/data-science-probability"},
+      {t:"Inference & Modeling",m:"Wk 4",u:"https://www.edx.org/course/data-science-inference-and-modeling"},
+      {t:"Productivity Tools",m:"Wk 5",u:"https://www.edx.org/course/data-science-productivity-tools"},
+      {t:"Wrangling",m:"Wk 6",u:"https://www.edx.org/course/data-science-wrangling"},
+      {t:"Linear Regression",m:"Wk 7",u:"https://www.edx.org/course/data-science-linear-regression"},
+      {t:"Machine Learning",m:"Wk 8",u:"https://www.edx.org/course/data-science-machine-learning"},
+      {t:"Capstone setup",m:"Wk 9",u:"https://www.edx.org/course/data-science-capstone"},
+      {t:"Recommendation System",m:"Wk 10",u:"https://www.edx.org/course/data-science-capstone"},
+      {t:"Capstone Project",m:"Wk 11",u:"https://www.edx.org/course/data-science-capstone"},
+      {t:"Final Submission",m:"Wk 12",u:"https://www.edx.org/course/data-science-capstone"}
+    ]},
+    {id:"ai", name:"Intro to AI", inst:"Harvard CS50 AI", icon:"🤖", grad:"linear-gradient(135deg,#7c3aed,#ec4899)", diff:"Intermediate", hrs:"30h", desc:"Build your own AI. Search, knowledge, neural nets, NLP.", lectures:[
+      {t:"Search",m:"Wk 0",u:"https://cs50.harvard.edu/ai/2024/weeks/0/"},
+      {t:"Knowledge",m:"Wk 1",u:"https://cs50.harvard.edu/ai/2024/weeks/1/"},
+      {t:"Uncertainty",m:"Wk 2",u:"https://cs50.harvard.edu/ai/2024/weeks/2/"},
+      {t:"Optimization",m:"Wk 3",u:"https://cs50.harvard.edu/ai/2024/weeks/3/"},
+      {t:"Learning",m:"Wk 4",u:"https://cs50.harvard.edu/ai/2024/weeks/4/"},
+      {t:"Neural Networks",m:"Wk 5",u:"https://cs50.harvard.edu/ai/2024/weeks/5/"},
+      {t:"Language",m:"Wk 6",u:"https://cs50.harvard.edu/ai/2024/weeks/6/"},
+      {t:"Project: Search agent",m:"Pset 0",u:"https://cs50.harvard.edu/ai/2024/projects/0/"},
+      {t:"Project: Knowledge",m:"Pset 1",u:"https://cs50.harvard.edu/ai/2024/projects/1/"},
+      {t:"Project: Uncertainty",m:"Pset 2",u:"https://cs50.harvard.edu/ai/2024/projects/2/"},
+      {t:"Project: Neural net",m:"Pset 4",u:"https://cs50.harvard.edu/ai/2024/projects/4/"},
+      {t:"Final Project",m:"Free choice",u:"https://cs50.harvard.edu/ai/2024/project/"}
+    ]}
+  ],
+  "🎨 creative": [
+    {id:"writing", name:"Modern Poetry", inst:"Yale (Langdon Hammer)", icon:"✍️", grad:"linear-gradient(135deg,#be185d,#f43f5e)", diff:"Beginner", hrs:"20h", desc:"Read poetry the way poets read it.", lectures:[
+      {t:"Introduction",m:"Lec 1",u:"https://oyc.yale.edu/english/engl-310/lecture-1"},
+      {t:"Robert Frost",m:"Lec 4",u:"https://oyc.yale.edu/english/engl-310/lecture-4"},
+      {t:"William Carlos Williams",m:"Lec 5",u:"https://oyc.yale.edu/english/engl-310/lecture-5"},
+      {t:"Ezra Pound",m:"Lec 7",u:"https://oyc.yale.edu/english/engl-310/lecture-7"},
+      {t:"T.S. Eliot",m:"Lec 8",u:"https://oyc.yale.edu/english/engl-310/lecture-8"},
+      {t:"Wallace Stevens",m:"Lec 13",u:"https://oyc.yale.edu/english/engl-310/lecture-13"},
+      {t:"Hart Crane",m:"Lec 16",u:"https://oyc.yale.edu/english/engl-310/lecture-16"},
+      {t:"Langston Hughes",m:"Lec 17",u:"https://oyc.yale.edu/english/engl-310/lecture-17"},
+      {t:"W. H. Auden",m:"Lec 19",u:"https://oyc.yale.edu/english/engl-310/lecture-19"},
+      {t:"Elizabeth Bishop",m:"Lec 20",u:"https://oyc.yale.edu/english/engl-310/lecture-20"},
+      {t:"Robert Lowell",m:"Lec 21",u:"https://oyc.yale.edu/english/engl-310/lecture-21"},
+      {t:"Allen Ginsberg",m:"Lec 23",u:"https://oyc.yale.edu/english/engl-310/lecture-23"}
+    ]},
+    {id:"photo", name:"Photography Basics", inst:"YouTube curated", icon:"📷", grad:"linear-gradient(135deg,#475569,#94a3b8)", diff:"Beginner", hrs:"10h", desc:"Composition, light, story. Free, fast.", lectures:[
+      {t:"Exposure Triangle",m:"~15min",u:"https://www.youtube.com/results?search_query=exposure+triangle+tutorial"},
+      {t:"Rule of Thirds",m:"~10min",u:"https://www.youtube.com/results?search_query=rule+of+thirds+photography"},
+      {t:"Leading Lines",m:"~10min",u:"https://www.youtube.com/results?search_query=leading+lines+photography"},
+      {t:"Golden Hour",m:"~15min",u:"https://www.youtube.com/results?search_query=golden+hour+photography"},
+      {t:"Portrait Lighting",m:"~20min",u:"https://www.youtube.com/results?search_query=portrait+lighting+basics"},
+      {t:"Phone Photography",m:"~20min",u:"https://www.youtube.com/results?search_query=iphone+photography+tutorial"},
+      {t:"Editing in Snapseed",m:"~20min",u:"https://www.youtube.com/results?search_query=snapseed+tutorial"},
+      {t:"Color Theory",m:"~15min",u:"https://www.youtube.com/results?search_query=color+theory+photography"},
+      {t:"Storytelling",m:"~20min",u:"https://www.youtube.com/results?search_query=photo+storytelling"},
+      {t:"Street Photography",m:"~25min",u:"https://www.youtube.com/results?search_query=street+photography+tutorial"},
+      {t:"Building a Portfolio",m:"~20min",u:"https://www.youtube.com/results?search_query=photography+portfolio+tutorial"},
+      {t:"Sharing on Instagram",m:"~15min",u:"https://www.youtube.com/results?search_query=instagram+photography+tips"}
+    ]},
+    {id:"design", name:"Graphic Design", inst:"CalArts (Coursera)", icon:"🎨", grad:"linear-gradient(135deg,#f59e0b,#ec4899)", diff:"Beginner", hrs:"18h", desc:"Real design from a real art school. Audit free.", lectures:[
+      {t:"Fundamentals: Imagemaking",m:"Wk 1",u:"https://www.coursera.org/learn/fundamentals-of-graphic-design"},
+      {t:"Typography",m:"Wk 2",u:"https://www.coursera.org/learn/fundamentals-of-graphic-design"},
+      {t:"Shape & Icons",m:"Wk 3",u:"https://www.coursera.org/learn/fundamentals-of-graphic-design"},
+      {t:"Color & Composition",m:"Wk 4",u:"https://www.coursera.org/learn/fundamentals-of-graphic-design"},
+      {t:"Final: Series",m:"Wk 5",u:"https://www.coursera.org/learn/fundamentals-of-graphic-design"},
+      {t:"Intro to Typography",m:"Wk 1 of T",u:"https://www.coursera.org/learn/typography"},
+      {t:"Letterforms",m:"Wk 2 of T",u:"https://www.coursera.org/learn/typography"},
+      {t:"Pairing Type",m:"Wk 3 of T",u:"https://www.coursera.org/learn/typography"},
+      {t:"Image Layout",m:"Wk 1 of IM",u:"https://www.coursera.org/learn/image-making"},
+      {t:"Composition",m:"Wk 2 of IM",u:"https://www.coursera.org/learn/image-making"},
+      {t:"Ideation",m:"Wk 3 of IM",u:"https://www.coursera.org/learn/image-making"},
+      {t:"Portfolio Piece",m:"Capstone",u:"https://www.coursera.org/specializations/graphic-design"}
+    ]}
+  ]
+};
+
+// ===================== STATE =====================
+const KEY = "vibha.v6";
+let state = load();
+
+function load() {
+  try { const r = localStorage.getItem(KEY); if (r) return JSON.parse(r); } catch(e){}
+  return {
+    theme: "peach",
+    streak: 0, lastOpen: null, xp: 0,
+    rings: { study: 0, apply: 0, self: 0 },
+    ringsDate: null,
+    promptIdx: Math.floor(Math.random()*PROMPTS.length),
+    promptDate: null, promptAnswer: "",
+    dqIdx: 0, dqAnswered: null, dqDate: null,
+    view: "home", filter: "all",
+    progress: {},  // {subject: {idx: true}}
+    milestones: {},
+    chat: [], prof: "any",
+    errorLog: [],
+    forever: [],
+    customSubjects: {},  // {id: {name, inst, icon, grad, lectures, ...}}
+    discoverQuery: ""
+  };
+}
+function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+function checkDaily() {
+  const today = new Date().toDateString();
+  if (state.lastOpen !== today) {
+    if (state.lastOpen) {
+      const last = new Date(state.lastOpen);
+      const diff = Math.floor((new Date() - last) / 86400000);
+      if (diff === 1) state.streak += 1;
+      else if (diff > 1) state.streak = Math.max(1, state.streak - 1);
+    } else state.streak = 1;
+    state.lastOpen = today;
+    save();
+  }
+  if (state.ringsDate !== today) {
+    state.ringsDate = today;
+    state.rings = { study: 0, apply: 0, self: 0 };
+    save();
+  }
+  if (state.promptDate !== today) {
+    state.promptDate = today;
+    state.promptIdx = Math.floor(Math.random()*PROMPTS.length);
+    state.promptAnswer = "";
+    save();
+  }
+  if (state.dqDate !== today) {
+    state.dqDate = today;
+    state.dqIdx = (state.dqIdx + 1) % DAILY_Q.length;
+    state.dqAnswered = null;
+    save();
+  }
+}
+checkDaily();
+
+function daysToSAT() { return Math.max(0, Math.ceil((new Date(SAT_DATE) - new Date()) / 86400000)); }
+function daysToAES() { return Math.max(0, Math.ceil((new Date(AES_DEADLINE) - new Date()) / 86400000)); }
+function milesDone() { return Object.values(state.milestones).filter(Boolean).length; }
+function projectedSAT() {
+  const total = LECTURES.sat.length + LECTURES.algebra.length;
+  let done = subDone("sat") + subDone("algebra");
+  return Math.round(BASELINE_SAT + (TARGET_SAT - BASELINE_SAT) * Math.min(1, done/total));
+}
+function subDone(s) { return Object.values(state.progress[s]||{}).filter(Boolean).length; }
+function getAllSubjects() {
+  const merged = { ...SUBJECTS };
+  Object.entries(state.customSubjects||{}).forEach(([id, s]) => {
+    merged[id] = { name: s.name, icon: s.icon, prof: s.inst, inst: s.inst, grad: s.gradVar || "--grad-collin", url: s.url || "", custom: true };
+  });
+  return merged;
+}
+function getLectures(k) {
+  if (LECTURES[k]) return LECTURES[k];
+  if (state.customSubjects && state.customSubjects[k]) return state.customSubjects[k].lectures;
+  return null;
+}
+function subTotal(s) { const l = getLectures(s); return l ? l.length : 0; }
+function isLecDone(s, i) { return !!(state.progress[s] && state.progress[s][i]); }
+function toggleLec(s, i) {
+  if (!state.progress[s]) state.progress[s] = {};
+  const was = state.progress[s][i];
+  state.progress[s][i] = !was;
+  if (!was) { state.xp += 10; if (navigator.vibrate) navigator.vibrate(15); }
+  save(); render();
+}
+
+// ===================== RENDER =====================
+const appEl = document.getElementById("app");
+const sheetEl = document.getElementById("sheet");
+const modalBg = document.getElementById("modalBg");
+const modalEl = document.getElementById("modal");
+
+function render() {
+  document.body.setAttribute("data-theme", state.theme);
+  appEl.innerHTML = "";
+  if (state.view === "home") renderHome();
+  else if (state.view === "detail-aes") renderAES();
+  else if (state.view === "tutor") renderTutor();
+  else if (state.view === "errlog") renderErrLog();
+  else if (state.view === "live") renderLive();
+  else if (state.view === "discover") renderDiscover();
+  else if (state.view === "mentor") renderMentor();
+  else if (state.view === "status") renderStatus();
+  else if (state.view === "aid") renderAid();
+  else if (state.view === "college") renderCollege();
+  renderSheet();
+}
+
+function renderHome() {
+  // HEADER + AES BANNER + CHIPS
+  let html = `
+    <div class="hdr">
+      <div class="hdr-name">hi <span class="em">${NAME}</span></div>
+      <div class="hdr-stats">
+        <div class="stat-chip">🔥 ${state.streak}</div>
+        <div class="stat-chip">⚡ ${state.xp}</div>
+        <button class="theme-btn" onclick="openThemes()">${THEMES.find(t=>t.id===state.theme).emoji}</button>
+      </div>
+    </div>
+    <div class="aes-banner" onclick="go('status')">
+      ${bannerHtml()}
+    </div>
+    <div class="chips-wrap">
+      <div class="chips">
+        ${Object.entries(getAllSubjects()).filter(([k,s]) => !s.hide || state.more || state.filter===k).map(([k,s]) => `<div class="chip ${state.filter===k?'active':''}" onclick="setFilter('${k}')">${s.name}${s.custom?' <span style="opacity:0.5;font-size:9px;">●</span>':''}</div>`).join("")}
+        <div class="chip" onclick="toggleMore()">${state.more?'− Less':'More'}</div>
+        <div class="chip" style="background:var(--grad-hero);color:white;border:none;font-weight:900;" onclick="state.view='discover';save();render();">+ Discover</div>
+      </div>
+    </div>
+  `;
+  
+  html += mentorCard();
+  // FILTERED CONTENT
+  if (state.filter === "all") {
+    html += renderAllView();
+  } else {
+    html += renderSubjectView(state.filter);
+  }
+  
+  appEl.innerHTML = html;
+}
+
+function renderAllView() {
+  // SAT Daily Question (top priority — Aug 22 looming)
+  const dq = DAILY_Q[state.dqIdx];
+  let html = `
+    <div class="card dq-card">
+      <div class="card-label"><span>▲ DAILY WARM-UP · 60 SEC</span><span class="badge">keep sharp</span></div>
+      <div class="dq-question">${dq.q}</div>
+      <div class="dq-opts">
+        ${dq.opts.map((o,i) => `<button class="dq-opt ${state.dqAnswered===i?(i===dq.correct?'correct':'wrong'):''}" onclick="answerDQ(${i})" ${state.dqAnswered!==null?'disabled':''}>${String.fromCharCode(65+i)}) ${o}</button>`).join("")}
+      </div>
+      ${state.dqAnswered !== null ? `<div class="dq-feedback"><strong>${state.dqAnswered === dq.correct ? '✓ Nailed it.' : '✗ Wrong — '+String.fromCharCode(65+dq.correct)+' is right.'}</strong> ${dq.exp}</div>` : ''}
+    </div>
+  `;
+  
+  // Next engineering-prep move — Hero card
+  const sat = SUBJECTS.calc;
+  const satNext = LECTURES.calc[subDone("calc")];
+  if (satNext) {
+    html += `
+      <div class="hero-card" onclick="setFilter('calc')">
+        <div class="bg" style="background:var(${sat.grad});"></div>
+        <div class="hero-symbol">${sat.icon}</div>
+        <div class="hero-meta"><span>MATH FOR ENGINEERING · STEP ${subDone("calc")+1} OF ${subTotal("calc")}</span><span>${sat.inst}</span></div>
+        <div class="hero-content">
+          <div class="hero-pill">★ next move</div>
+          <div class="hero-title">${satNext.t}</div>
+          <div class="hero-prof">${sat.prof} · ${satNext.m}</div>
+        </div>
+      </div>
+    `;
+  }
+  
+  // AI Tutor card
+  html += `
+    <div class="card tutor-card" onclick="state.view='tutor';save();render();">
+      <div class="card-label">✦ AI · 6 PROFESSORS</div>
+      <div class="card-q">${NAME}, ask anything.</div>
+      <div class="tutor-card-sub">Stuck on a problem? Need an essay opener? Type → faculty answers.</div>
+      <div class="prof-row">
+        <span class="prof-chip">∫ Jerison</span>
+        <span class="prof-chip">Σ Blitzstein</span>
+        <span class="prof-chip">¶ Fry</span>
+        <span class="prof-chip">⊕ Smith</span>
+        <span class="prof-chip">◐ Mazzola</span>
+        <span class="prof-chip">▲ Khan</span>
+      </div>
+    </div>
+  `;
+  
+  // Today prompt
+  const prompt = PROMPTS[state.promptIdx];
+  const r1 = Math.min(100, state.rings.study);
+  const r2 = Math.min(100, state.rings.apply);
+  const r3 = Math.min(100, state.rings.self);
+  const C = 2 * Math.PI * 15;
+  html += `
+    <div class="card">
+      <div class="card-label">— TODAY · ${new Date().toLocaleDateString('en-US',{weekday:'long', month:'short', day:'numeric'}).toUpperCase()}</div>
+      <div class="today-prompt-wrap">
+        <div class="today-prompt"><span class="em">"</span>${prompt}<span class="em">"</span></div>
+        <textarea class="today-input" placeholder="type whatever — only you see this..." oninput="onPrompt(this.value)">${state.promptAnswer||''}</textarea>
+      </div>
+      <div class="today-rings">
+        <div class="ring-block" onclick="bumpRing('study')">
+          <svg class="ring-svg" viewBox="0 0 36 36">
+            <circle class="ring-bg-c" cx="18" cy="18" r="15"></circle>
+            <circle cx="18" cy="18" r="15" stroke="var(--ring-1)" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-r1/100)}" transform="rotate(-90 18 18)"></circle>
+          </svg>
+          <div class="ring-info"><div class="lbl">STUDY</div><div class="val">${r1}%</div></div>
+        </div>
+        <div class="ring-block" onclick="bumpRing('apply')">
+          <svg class="ring-svg" viewBox="0 0 36 36">
+            <circle class="ring-bg-c" cx="18" cy="18" r="15"></circle>
+            <circle cx="18" cy="18" r="15" stroke="var(--ring-2)" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-r2/100)}" transform="rotate(-90 18 18)"></circle>
+          </svg>
+          <div class="ring-info"><div class="lbl">APPLY</div><div class="val">${r2}%</div></div>
+        </div>
+        <div class="ring-block" onclick="bumpRing('self')">
+          <svg class="ring-svg" viewBox="0 0 36 36">
+            <circle class="ring-bg-c" cx="18" cy="18" r="15"></circle>
+            <circle cx="18" cy="18" r="15" stroke="var(--ring-3)" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-r3/100)}" transform="rotate(-90 18 18)"></circle>
+          </svg>
+          <div class="ring-info"><div class="lbl">SELF</div><div class="val">${r3}%</div></div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Error Log summary
+  html += `
+    <div class="card" onclick="state.view='errlog';save();render();">
+      <div class="card-label">📓 ERROR LOG · MELTZER METHOD</div>
+      <div class="card-q">${state.errorLog.length} ${state.errorLog.length===1?'mistake':'mistakes'} logged.</div>
+      <div style="font-size:12px;color:var(--text-soft);font-weight:600;line-height:1.5;">After each practice test, log every wrong question. Patterns in your mistakes show what to study next.</div>
+    </div>
+  `;
+  
+  // AP subjects mini-grid preview
+  html += `<div class="sec-head"><h2>${NAME}'s subjects</h2><div class="see-all" onclick="state.view='discover';save();render();">+ discover →</div></div>`;
+  ['calc','stats','lit','env','art'].forEach(k => {
+    const s = SUBJECTS[k];
+    const done = subDone(k);
+    const total = subTotal(k);
+    const pct = total ? Math.round(done/total*100) : 0;
+    const next = LECTURES[k] ? LECTURES[k][Math.min(done, total-1)] : null;
+    html += `
+      <div class="lec-row" onclick="setFilter('${k}')">
+        <div class="live-cover" style="background:var(${s.grad});width:42px;height:42px;border-radius:11px;font-size:20px;">${s.icon}</div>
+        <div class="lec-info">
+          <div class="lec-title">${s.name.replace(/^[^\s]+\s/,'')} · ${s.inst}</div>
+          <div class="lec-meta">${done}/${total} · ${pct}% · next: ${next ? (next.t.length>30?next.t.slice(0,30)+'…':next.t) : 'done'}</div>
+        </div>
+        <div class="ic-btn">→</div>
+      </div>
+    `;
+  });
+  
+  // Collin row
+  const cs = SUBJECTS.collin;
+  const cdone = subDone("collin");
+  const ctot = subTotal("collin");
+  html += `
+    <div class="lec-row" onclick="setFilter('collin')" style="margin-top:6px;">
+      <div class="live-cover" style="background:var(${cs.grad});width:42px;height:42px;border-radius:11px;font-size:20px;">${cs.icon}</div>
+      <div class="lec-info">
+        <div class="lec-title">Collin Dual Credit · Frisco ISD</div>
+        <div class="lec-meta">${cdone}/${ctot} · transfers to many Texas universities</div>
+      </div>
+      <div class="ic-btn">→</div>
+    </div>
+  `;
+  
+  // Custom subjects rows
+  Object.entries(state.customSubjects||{}).forEach(([k, c]) => {
+    const done = subDone(k);
+    const total = c.lectures.length;
+    const pct = total ? Math.round(done/total*100) : 0;
+    html += `
+      <div class="lec-row" onclick="setFilter('${k}')" style="margin-top:6px;">
+        <div class="live-cover" style="background:${c.grad};width:42px;height:42px;border-radius:11px;font-size:20px;">${c.icon}</div>
+        <div class="lec-info">
+          <div class="lec-title">${c.name.replace(/^[^\s]+\s/,'')} · ${c.inst}</div>
+          <div class="lec-meta">${done}/${total} · ${pct}% · <span style="color:var(--accent);font-weight:800;">custom</span></div>
+        </div>
+        <div class="ic-btn">→</div>
+      </div>
+    `;
+  });
+  
+  // Live sessions teaser
+  html += `<div class="sec-head"><h2>Book a free live session</h2><div class="see-all" onclick="state.view='live';save();render();">all ${LIVE_SESSIONS.length} →</div></div>`;
+  LIVE_SESSIONS.slice(0,2).forEach((s,i) => {
+    html += renderLiveCard(s, i);
+  });
+  
+  // Year/Wrapped + Forever
+  html += `
+    <div class="card year-card">
+      <div class="card-label">— THIS YEAR · CLASS OF 2027</div>
+      <div class="card-q">your Wrapped drops Dec 31.</div>
+      <div class="card-sub">Days journaled · streaks · top subject · the year in one shareable card.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">📔 FOREVER · YOUR ARCHIVE</div>
+      <div class="card-q">${state.forever.length} ${state.forever.length===1?'entry':'entries'}.</div>
+      <div style="font-size:12px;color:var(--text-soft);font-weight:600;line-height:1.5;">Every prompt, every milestone. Only you see this. From high school through whatever's next.</div>
+    </div>
+  `;
+  
+  return html;
+}
+
+function renderSubjectView(k) {
+  const allSubs = getAllSubjects();
+  const s = allSubs[k];
+  const lectures = getLectures(k);
+  if (!s || !lectures) return '<div style="text-align:center;padding:30px;color:var(--text-soft);">Loading...</div>';
+  const done = subDone(k);
+  const total = lectures.length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  const isCustom = !!s.custom;
+  const gradStyle = isCustom && state.customSubjects[k].grad ? `background:${state.customSubjects[k].grad};` : `background:var(${s.grad});`;
+  
+  let html = `
+    <div class="hero-card" onclick="window.open('${s.url||lectures[0].u||''}','_blank')">
+      <div class="bg" style="${gradStyle}"></div>
+      <div class="hero-symbol">${s.icon}</div>
+      <div class="hero-meta"><span>${pct}% · ${done}/${total}</span><span>${s.inst}</span></div>
+      <div class="hero-content">
+        <div class="hero-pill">${NAME}'s ${s.name.replace(/^[^\s]+\s/,'')}</div>
+        <div class="hero-title">${s.prof}</div>
+        <div class="hero-prof">tap to open at ${s.inst}</div>
+      </div>
+    </div>
+  `;
+  
+  if (isCustom) {
+    html += `<button class="errlog-add" onclick="removeCustom('${k}')" style="margin-bottom:12px;background:var(--surface-2);color:var(--text);border:1px solid var(--border);">🗑 Remove this subject</button>`;
+  }
+  
+  // Special: Error log button for SAT
+  if (k === "sat") {
+    html += `
+      <button class="errlog-add" onclick="state.view='errlog';save();render();" style="margin-bottom:12px;">
+        📓 Open Error Log (${state.errorLog.length} logged)
+      </button>
+    `;
+  }
+  
+  // All lectures
+  lectures.forEach((w,i) => {
+    const d = isLecDone(k,i);
+    html += `
+      <div class="lec-row ${d?'done':''}">
+        <div class="lec-num"><span class="n">${String(i+1).padStart(2,'0')}</span></div>
+        <div class="lec-info">
+          <div class="lec-title">${w.t}</div>
+          <div class="lec-meta">${w.m}</div>
+        </div>
+        <div class="lec-actions">
+          ${w.u ? `<div class="ic-btn open" onclick="window.open('${w.u}','_blank')">▶</div>` : ''}
+          <div class="ic-btn check ${d?'done':''}" onclick="toggleLec('${k}',${i})">${d?'✓':'○'}</div>
+        </div>
+      </div>
+    `;
+  });
+  
+  return html;
+}
+
+function renderLiveCard(s, i) {
+  return `
+    <div class="live-card">
+      <div class="live-cover" style="background:var(${s.g});">${s.i}</div>
+      <div class="live-info">
+        <span class="live-pill">FREE</span>
+        <div class="live-title">${s.t}</div>
+        <div class="live-org">${s.o}</div>
+        <div class="live-actions">
+          <button class="mini-btn primary" onclick="window.open('${s.u}','_blank')">Sign up →</button>
+          <button class="mini-btn" onclick="bookCal(${i})">📅</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderAES() {
+  let html = `
+    <button class="back-btn" onclick="state.view='home';save();render();">← back</button>
+    <div class="detail-h"><span class="em">${NAME}'s</span> runway</div>
+    <div class="detail-sub">${milesDone()} of ${AES_MILESTONES.length} done</div>
+  `;
+  AES_MILESTONES.forEach((m,i) => {
+    const done = !!state.milestones[i];
+    html += `<div class="milestone ${done?'done':''} ${m.urgent?'urgent':''}">
+      <div class="ms-num"><span class="n">${i+1}</span></div>
+      <div class="ms-info">
+        <div class="ms-date">${m.date}</div>
+        <div class="ms-title">${m.t}</div>
+        <div class="ms-desc">${m.desc}</div>
+      </div>
+      <div class="ms-actions">
+        ${m.u ? `<div class="ic-btn" onclick="window.open('${m.u}','_blank')">↗</div>` : ''}
+        <div class="ic-btn check ${done?'done':''}" onclick="toggleMile(${i})">${done?'✓':'○'}</div>
+      </div>
+    </div>`;
+  });
+  appEl.innerHTML = html;
+}
+
+function renderTutor() {
+  const profs = [
+    {id:"any",lb:"✦ Any"},
+    {id:"jerison",lb:"∫ Jerison"},
+    {id:"blitzstein",lb:"Σ Blitzstein"},
+    {id:"fry",lb:"¶ Fry"},
+    {id:"smith",lb:"⊕ Smith"},
+    {id:"mazzola",lb:"◐ Mazzola"},
+    {id:"khan",lb:"▲ Khan"}
+  ];
+  const chatHtml = state.chat.length ? state.chat.map(m => 
+    `<div class="chat-msg ${m.r}">${m.r==='tutor'?`<div class="prof-lbl">${escapeH(m.p)}</div>`:''}${escapeH(m.t).replace(/\n/g,'<br>')}</div>`
+  ).join("") : `<div class="chat-msg tutor"><div class="prof-lbl">Faculty</div>Hi ${NAME} — your Ivy faculty here. Ask anything: an SAT trap, Bluebook Q, essay opener, Calc concept that didn't click. We're listening.</div>`;
+  
+  appEl.innerHTML = `
+    <button class="back-btn" onclick="state.view='home';save();render();">← back</button>
+    <div class="detail-h"><span class="em">${NAME}</span>, ask the faculty</div>
+    <div class="detail-sub">Free · no signup · unlimited</div>
+    <div class="tutor-shell">
+      <div class="fac-row">
+        ${profs.map(p => `<button class="fac-chip ${state.prof===p.id?'active':''}" onclick="state.prof='${p.id}';save();render();">${p.lb}</button>`).join("")}
+      </div>
+      <div class="chat-area" id="chatArea">${chatHtml}</div>
+      <div class="quick-row">
+        <span class="quick-chip" onclick="qp('What is the single highest-leverage thing I should do this week for scholarships?')">This week</span>
+        <span class="quick-chip" onclick="qp('Walk me through an SAT R&W transition Q — how do I spot the answer?')">SAT R&W</span>
+        <span class="quick-chip" onclick="qp('Draft a 650-word Common App essay opening — I want to write about changing my mind.')">Essay opener</span>
+        <span class="quick-chip" onclick="qp('Explain limits like I just finished APs.')">Limits 101</span>
+      </div>
+      <div class="chat-input-row">
+        <input class="chat-in" id="chatIn" placeholder="${NAME}, ask anything..." onkeypress="if(event.key==='Enter')sendChat()" />
+        <button class="send-btn" onclick="sendChat()">Send</button>
+      </div>
+    </div>
+  `;
+  const ca = document.getElementById("chatArea");
+  if (ca) ca.scrollTop = ca.scrollHeight;
+}
+
+function renderErrLog() {
+  let html = `
+    <button class="back-btn" onclick="state.view='home';save();render();">← back</button>
+    <div class="detail-h"><span class="em">${NAME}'s</span> error log</div>
+    <div class="detail-sub">${state.errorLog.length} logged · find the pattern in your mistakes</div>
+    <button class="errlog-add" onclick="addErr()" style="margin-bottom:14px;">+ Add wrong question</button>
+  `;
+  if (state.errorLog.length === 0) {
+    html += `<div style="text-align:center;padding:30px 20px;color:var(--text-soft);font-size:13px;font-weight:600;line-height:1.6;">No errors logged yet.<br>After each Bluebook test, log every wrong question.<br>That's how you find what to study next.</div>`;
+  } else {
+    state.errorLog.forEach((e,i) => {
+      html += `<div class="errlog-entry">
+        <span class="err-cat">${e.cat}</span>
+        <div class="err-note">${escapeH(e.note)}</div>
+        <button class="err-del" onclick="delErr(${i})">×</button>
+      </div>`;
+    });
+  }
+  appEl.innerHTML = html;
+}
+
+function renderDiscover() {
+  const q = (state.discoverQuery || "").toLowerCase().trim();
+  const allCourses = [];
+  Object.entries(CATALOG).forEach(([category, courses]) => {
+    courses.forEach(c => allCourses.push({...c, category}));
+  });
+  
+  let html = `
+    <button class="back-btn" onclick="state.view='home';save();render();">← back</button>
+    <div class="detail-h">discover <span class="em">anything</span></div>
+    <div class="detail-sub">free courses from MIT · Harvard · Yale · Khan · Coursera · curated for ${NAME}</div>
+    
+    <div class="disc-search-wrap">
+      <span class="disc-search-icon">🔎</span>
+      <input class="disc-search" id="discSearch" placeholder="try 'physics' or 'spanish' or 'philosophy'..." value="${q}" oninput="state.discoverQuery=this.value;save();render();setTimeout(()=>{const el=document.getElementById('discSearch');if(el){el.focus();el.setSelectionRange(el.value.length,el.value.length);}},0);" />
+    </div>
+  `;
+  
+  if (q.length > 0) {
+    // SEARCH RESULTS
+    const results = allCourses.filter(c => 
+      c.name.toLowerCase().includes(q) || 
+      c.inst.toLowerCase().includes(q) || 
+      c.desc.toLowerCase().includes(q) ||
+      c.category.toLowerCase().includes(q)
+    ).slice(0, 6);
+    
+    if (results.length === 0) {
+      html += `<div class="disc-empty">No matches yet. Try a broader term like 'language' or 'science'. Or browse the rows below.</div>`;
+      // Show all rows below
+      Object.entries(CATALOG).forEach(([cat, courses]) => {
+        html += `<div class="disc-row"><div class="disc-row-head">${cat}</div><div class="disc-row-scroll">${courses.map(c => renderDiscCard(c)).join("")}</div></div>`;
+      });
+    } else {
+      html += `<div style="font-size:11px;font-weight:800;letter-spacing:1px;color:var(--text-mute);text-transform:uppercase;margin:6px 4px 10px;">Top ${results.length} match${results.length===1?'':'es'}</div>`;
+      html += `<div class="disc-results">${results.map(c => renderDiscCard(c)).join("")}</div>`;
+    }
+  } else {
+    // BROWSE BY CATEGORY (Netflix rows)
+    Object.entries(CATALOG).forEach(([cat, courses]) => {
+      html += `
+        <div class="disc-row">
+          <div class="disc-row-head">${cat}</div>
+          <div class="disc-row-scroll">
+            ${courses.map(c => renderDiscCard(c)).join("")}
+          </div>
+        </div>
+      `;
+    });
+  }
+  
+  appEl.innerHTML = html;
+}
+
+function renderDiscCard(c) {
+  const added = !!(state.customSubjects && state.customSubjects[c.id]);
+  return `
+    <div class="disc-card">
+      <div class="disc-cover" style="background:${c.grad};">
+        <div class="disc-icon">${c.icon}</div>
+        <div class="disc-name">${c.name}</div>
+      </div>
+      <div class="disc-body">
+        <div class="disc-inst">${c.inst.toUpperCase()}</div>
+        <div class="disc-desc">${c.desc}</div>
+        <div class="disc-meta">
+          <span class="disc-tag">${c.diff}</span>
+          <span class="disc-tag">${c.hrs}</span>
+          <span class="disc-tag">${c.lectures.length} lec</span>
+        </div>
+        <button class="disc-add" onclick="addCustom('${c.id}')" ${added?'disabled':''}>${added?'✓ Added':'+ Add to my app'}</button>
+      </div>
+    </div>
+  `;
+}
+
+function addCustom(id) {
+  // Find the course in catalog
+  let course = null;
+  Object.values(CATALOG).forEach(cs => {
+    cs.forEach(c => { if (c.id === id) course = c; });
+  });
+  if (!course) return;
+  
+  // Avoid collision with built-in
+  let useId = id;
+  if (SUBJECTS[id]) useId = "custom-" + id;
+  
+  state.customSubjects = state.customSubjects || {};
+  state.customSubjects[useId] = {
+    name: course.icon + " " + course.name.split(":")[0].trim(),
+    inst: course.inst,
+    icon: course.icon,
+    grad: course.grad,
+    lectures: course.lectures,
+    url: course.lectures[0] ? course.lectures[0].u : "",
+    diff: course.diff,
+    hrs: course.hrs,
+    desc: course.desc
+  };
+  state.xp += 20;
+  if (navigator.vibrate) navigator.vibrate([10,40,10]);
+  save();
+  // Stay on discover so she can keep adding, but show toast feel via re-render
+  render();
+}
+
+function removeCustom(k) {
+  if (!confirm("Remove this subject? Your progress in it will be lost.")) return;
+  if (state.customSubjects) delete state.customSubjects[k];
+  if (state.progress) delete state.progress[k];
+  if (state.filter === k) state.filter = "all";
+  save(); render();
+}
+
+function renderLive() {
+  let html = `
+    <button class="back-btn" onclick="state.view='home';save();render();">← back</button>
+    <div class="detail-h">live <span class="em">sessions</span></div>
+    <div class="detail-sub">${LIVE_SESSIONS.length} free options · commitment beats content</div>
+  `;
+  LIVE_SESSIONS.forEach((s,i) => html += renderLiveCard(s,i));
+  appEl.innerHTML = html;
+}
+
+function renderSheet() {
+  sheetEl.innerHTML = `
+    <div class="sheet-handle"></div>
+    <div class="qa-grid" style="grid-template-columns: repeat(5, 1fr);">
+      <button class="qa-btn" onclick="go('status')"><div class="qa-ic">📍</div><div class="qa-lb">Status</div></button>
+      <button class="qa-btn" onclick="state.view='mentor';save();render();"><div class="qa-ic">🧭</div><div class="qa-lb">Mentor</div></button>
+      <button class="qa-btn" onclick="state.view='aid';save();render();"><div class="qa-ic">🎓</div><div class="qa-lb">Aid</div></button>
+      <button class="qa-btn" onclick="state.view='college';save();render();"><div class="qa-ic">🏫</div><div class="qa-lb">College</div></button>
+      <button class="qa-btn" onclick="bumpRing('study')"><div class="qa-ic">📖</div><div class="qa-lb">+Study</div></button>
+      <button class="qa-btn" onclick="state.view='tutor';save();render();"><div class="qa-ic">✦</div><div class="qa-lb">AI</div></button>
+      <button class="qa-btn" onclick="state.view='errlog';save();render();"><div class="qa-ic">📓</div><div class="qa-lb">Errors</div></button>
+      <button class="qa-btn" onclick="state.view='live';save();render();"><div class="qa-ic">⚡</div><div class="qa-lb">Live</div></button>
+      <button class="qa-btn" onclick="state.view='discover';save();render();"><div class="qa-ic">🔎</div><div class="qa-lb">Explore</div></button>
+      <button class="qa-btn" onclick="exportData()"><div class="qa-ic">💾</div><div class="qa-lb">Export</div></button>
+    </div>
+  `;
+}
+
+// ===================== ACTIONS =====================
+function setFilter(k) { state.filter = k; save(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openThemes() {
+  modalEl.innerHTML = `
+    <h3>pick your vibe</h3>
+    <div class="modal-sub">your app, your aesthetic. change anytime.</div>
+    <div class="theme-grid">
+      ${THEMES.map(t => `<div class="theme-card ${t.cls} ${state.theme===t.id?'active':''}" onclick="setTheme('${t.id}')"><div class="te">${t.emoji}</div><div class="tn">${t.name}</div></div>`).join("")}
+    </div>
+  `;
+  modalBg.classList.add("show");
+}
+function closeModal() { modalBg.classList.remove("show"); }
+function setTheme(t) {
+  state.theme = t; save(); closeModal(); render();
+  if (navigator.vibrate) navigator.vibrate(15);
+}
+function toggleMile(i) {
+  state.milestones[i] = !state.milestones[i];
+  if (state.milestones[i]) { state.xp += 25; if (navigator.vibrate) navigator.vibrate([10,40,10]); }
+  save(); render();
+}
+function bumpRing(k) {
+  state.rings[k] = Math.min(100, (state.rings[k]||0) + 25);
+  state.xp += 5;
+  if (navigator.vibrate) navigator.vibrate(10);
+  save(); render();
+}
+function answerDQ(i) {
+  if (state.dqAnswered !== null) return;
+  state.dqAnswered = i;
+  const dq = DAILY_Q[state.dqIdx];
+  if (i === dq.correct) state.xp += 15;
+  if (navigator.vibrate) navigator.vibrate(i === dq.correct ? [10,30,10] : 30);
+  save(); render();
+}
+function onPrompt(v) {
+  state.promptAnswer = v;
+  if (v.length > 5) {
+    const idx = state.forever.findIndex(e => e.date === state.promptDate);
+    if (idx >= 0) state.forever[idx].answer = v;
+    else { state.forever.unshift({ date: state.promptDate, prompt: PROMPTS[state.promptIdx], answer: v }); state.xp += 10; }
+    if (state.forever.length > 500) state.forever = state.forever.slice(0,500);
+  }
+  save();
+}
+function addErr() {
+  modalEl.innerHTML = `
+    <h3>log a wrong question</h3>
+    <select id="errCat">
+      <option value="ALGEBRA">Heart of Algebra</option>
+      <option value="ADV MATH">Advanced Math</option>
+      <option value="PROB SOLV">Problem Solving & Data</option>
+      <option value="GEOMETRY">Geometry & Trig</option>
+      <option value="GRAMMAR">Standard English</option>
+      <option value="TRANSITIONS">Transitions</option>
+      <option value="VOCAB">Vocabulary</option>
+      <option value="MAIN IDEA">Main Idea / Inference</option>
+      <option value="EVIDENCE">Evidence</option>
+    </select>
+    <input id="errNote" placeholder="brief: what tripped you up?" />
+    <div class="actions">
+      <button class="btn ghost" onclick="closeModal()">cancel</button>
+      <button class="btn primary" onclick="saveErr()">log it</button>
+    </div>
+  `;
+  modalBg.classList.add("show");
+}
+function saveErr() {
+  const cat = document.getElementById("errCat").value;
+  const note = document.getElementById("errNote").value.trim();
+  if (!note) return;
+  state.errorLog.unshift({ cat, note, date: new Date().toISOString() });
+  if (state.errorLog.length > 50) state.errorLog = state.errorLog.slice(0,50);
+  state.xp += 5;
+  save(); closeModal(); render();
+}
+function delErr(i) { state.errorLog.splice(i,1); save(); render(); }
+function bookCal(i) {
+  const s = LIVE_SESSIONS[i];
+  const start = new Date(Date.now() + 24*3600*1000);
+  start.setHours(19,0,0,0);
+  const end = new Date(start.getTime() + 3600*1000);
+  const fmt = d => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  const u = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(s.t)}&dates=${fmt(start)}/${fmt(end)}&details=${encodeURIComponent(s.o+'\n\n'+s.u)}&location=${encodeURIComponent(s.u)}`;
+  window.open(u,'_blank');
+}
+function qp(t) { document.getElementById("chatIn").value=t; sendChat(); }
+async function sendChat() {
+  const inp = document.getElementById("chatIn");
+  const q = inp.value.trim();
+  if (!q) return;
+  inp.value = "";
+  state.chat.push({r:"user",t:q});
+  state.chat.push({r:"tutor",p:"Thinking...",t:"..."});
+  save(); render();
+  const profMap = {
+    jerison:"Prof. David Jerison (MIT, Calc)",
+    blitzstein:"Prof. Joe Blitzstein (Harvard, Stats)",
+    fry:"Prof. Paul H. Fry (Yale, Lit Theory)",
+    smith:"Prof. Ronald B. Smith (Yale, Climate)",
+    mazzola:"Lisa Mazzola (MoMA, Art)",
+    khan:"Sal Khan (SAT)",
+    any:"the right Ivy professor for the question"
+  };
+  const sys = `You are ${profMap[state.prof]} mentoring ${NAME}, a 17-year-old AP student at high school in Texas. PRIMARY: winning scholarships and starting college engineering strongly (already admitted to university). Secondary: master her APs (Calc via MIT/Jerison, Stats via Harvard/Blitzstein, Lit via Yale/Fry, Env Sci via Yale/Smith, Art via MoMA/Mazzola). Also enrolled in Collin College dual credit (transfers to many Texas universities). Tertiary: scholarship applications.
+
+Warm Ivy-professor tone. MAX 160 words. Reference specific lectures when relevant. No markdown headers. Flowing prose. Concrete & actionable. Address her as ${NAME}.
+
+Question: ${q}`;
+  try {
+    const url = "https://text.pollinations.ai/" + encodeURIComponent(sys) + "?model=openai&private=true";
+    const res = await fetch(url);
+    const txt = await res.text();
+    state.chat.pop();
+    state.chat.push({r:"tutor", p: state.prof === "any" ? "Faculty" : profMap[state.prof], t: (txt||"Hmm, try again.").trim()});
+    if (state.chat.length > 30) state.chat = state.chat.slice(-30);
+    save(); render();
+  } catch(e) {
+    state.chat.pop();
+    state.chat.push({r:"tutor",p:"Faculty",t:`(${NAME}, AI offline — try again in 60 sec.)`});
+    save(); render();
+  }
+}
+function exportData() {
+  const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `vibha-${new Date().toISOString().split('T')[0]}.json`;
+  a.click(); URL.revokeObjectURL(url);
+}
+function escapeH(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+
+// ===================== MENTOR + STATUS v8 =====================
+// Personal data (schools, deadlines, to-dos) is NOT in this file. It lives in status.enc.json,
+// encrypted with a passcode. Without the passcode the page shows only generic study content.
+let STATUS = null;            // decrypted object
+let STATUS_STATE = "loading"; // loading | locked | none | ok
+let STATUS_MSG = "";
+let ENC_FILE = null;
+let KEY_FILE = null;   // v2: private key sealed with the passcode
+state.sch = state.sch || {};
+state.customSch = state.customSch || [];
+state.checkins = state.checkins || [];
+state.col = state.col || {};
+state.td = state.td || {};
+state.essayNotes = state.essayNotes || "";
+
+function b64(s){ return Uint8Array.from(atob(s), c => c.charCodeAt(0)); }
+async function decStatus(pass, f){
+  if (f.v === 2) {
+    // v2: status sealed with a public key (publisher needs no passcode); passcode unlocks the private key.
+    if (!KEY_FILE) { const r = await fetch("key.enc.json?ts=" + Date.now(), {cache:"no-store"}); if (!r.ok) throw new Error("nokey"); KEY_FILE = await r.json(); }
+    const km2 = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+    const kk = await crypto.subtle.deriveKey({name:"PBKDF2", salt:b64(KEY_FILE.salt), iterations:KEY_FILE.iter, hash:"SHA-256"}, km2, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+    const pk8 = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(KEY_FILE.iv)}, kk, b64(KEY_FILE.ct));
+    const priv = await crypto.subtle.importKey("pkcs8", pk8, {name:"RSA-OAEP", hash:"SHA-256"}, false, ["decrypt"]);
+    const raw = await crypto.subtle.decrypt({name:"RSA-OAEP"}, priv, b64(f.wk));
+    const ak = await crypto.subtle.importKey("raw", raw, "AES-GCM", false, ["decrypt"]);
+    const pt2 = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(f.iv)}, ak, b64(f.ct));
+    return JSON.parse(new TextDecoder().decode(pt2));
+  }
+  const km = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({name:"PBKDF2", salt:b64(f.salt), iterations:f.iter, hash:"SHA-256"}, km, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  const pt = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(f.iv)}, key, b64(f.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+function lsSet(k,v){ try { if (v===null) localStorage.removeItem(k); else localStorage.setItem(k,v); } catch(e){} }
+async function tryUnlock(pass, remember){
+  if (!ENC_FILE) return false;
+  try {
+    STATUS = await decStatus(pass, ENC_FILE);
+    STATUS_STATE = "ok"; STATUS_MSG = "";
+    AES_MILESTONES = STATUS.milestones || [];
+    if (remember) lsSet("vibha.pass", pass);
+    return true;
+  } catch(e) { STATUS = null; STATUS_STATE = "locked"; STATUS_MSG = "That passcode did not work. Check it and try again."; return false; }
+}
+async function initStatus(){
+  try {
+    const r = await fetch("status.enc.json?ts=" + Date.now(), {cache:"no-store"});
+    if (!r.ok) throw new Error("none");
+    ENC_FILE = await r.json();
+  } catch(e) { STATUS_STATE = "none"; render(); return; }
+  STATUS_STATE = "locked";
+  const saved = lsGet("vibha.pass");
+  if (saved) await tryUnlock(saved, false);
+  render();
+}
+async function doUnlock(){
+  const p = document.getElementById("passIn").value;
+  const rem = document.getElementById("passRem").checked;
+  if (!p) return;
+  await tryUnlock(p, rem); render();
+}
+function forgetDevice(){ lsSet("vibha.pass", null); STATUS = null; STATUS_STATE = ENC_FILE ? "locked" : "none"; AES_MILESTONES = []; render(); }
+
+function lockCard(){
+  if (STATUS_STATE === "loading") return `<div class="card"><div class="card-label">My college status</div><div class="m-sub">Loading...</div></div>`;
+  if (STATUS_STATE === "none") return `<div class="card"><div class="card-label">My college status</div><div class="m-sub">No status has been published yet. Ask Dad to update it.</div></div>`;
+  return `<div class="card m-card"><div class="card-label"><span>🔒 My college status</span></div>
+    <div class="m-sub">Enter the family passcode to see your schools, deadlines and to-dos.</div>
+    <input class="chat-in" id="passIn" type="password" placeholder="Passcode" autocomplete="off" onkeypress="if(event.key==='Enter')doUnlock()">
+    <label class="m-elig" style="margin:8px 0"><input type="checkbox" id="passRem" checked> Remember on this device</label>
+    ${STATUS_MSG ? `<div class="m-sub" style="color:var(--accent)">${escapeH(STATUS_MSG)}</div>` : ""}
+    <button class="m-btn" onclick="doUnlock()">Unlock</button></div>`;
+}
+
+// ---- data helpers ----
+function allSch(){ return ((STATUS && STATUS.scholarships) || []).concat(state.customSch).slice().sort((a,b)=>a.d.localeCompare(b.d)); }
+function sget(id){ return state.sch[id] || {st:"todo", elig:false}; }
+function dleft(d){ const e = new Date(d+"T23:59:00"); return Math.ceil((e - new Date())/86400000); }
+function weekStart(){ const n=new Date(); const dow=(n.getDay()+6)%7; return new Date(n.getFullYear(),n.getMonth(),n.getDate()-dow); }
+function subsThisWeek(){
+  const ws = weekStart();
+  return allSch().filter(s => { const v=sget(s.id); return (v.st==="sub"||v.st==="won") && v.subAt && new Date(v.subAt)>=ws && s.kind!=="task"; }).length;
+}
+function openItems(){ return allSch().filter(s => { const v=sget(s.id); return (v.st==="todo"||v.st==="draft") && dleft(s.d) >= -3; }); }
+function mentorNext(){ return openItems()[0]; }
+function dchip(d){
+  const n = dleft(d);
+  if (n < 0) return `<span class="m-chip late">passed ${-n}d ago</span>`;
+  if (n === 0) return `<span class="m-chip hot">today</span>`;
+  if (n <= 7) return `<span class="m-chip hot">${n}d left</span>`;
+  return `<span class="m-chip">${n}d left</span>`;
+}
+function fmtD(d){ return new Date(d+"T12:00:00").toLocaleDateString(undefined,{month:"short",day:"numeric",year:"numeric"}); }
+function staleNote(){
+  if (!STATUS || !STATUS.updated) return "";
+  const age = -dleft(STATUS.updated);
+  return age > 14 ? `<div class="m-sub" style="color:var(--accent)">Status is ${age} days old. Ask Dad to refresh it before you rely on it.</div>` : "";
+}
+
+function bannerHtml(){
+  if (STATUS_STATE === "ok") {
+    const nx = mentorNext();
+    if (nx) return `<div class="aes-pill">▲ next deadline</div>
+      <div class="aes-big">${Math.max(0,dleft(nx.d))}<span class="small"> days · ${escapeH(nx.t)}</span></div>
+      <div class="aes-traj">${escapeH(STATUS.headline || "")}</div>`;
+    return `<div class="aes-pill">▲ my college plan</div><div class="aes-big">✓<span class="small"> all caught up</span></div><div class="aes-traj">${escapeH(STATUS.headline || "")}</div>`;
+  }
+  return `<div class="aes-pill">▲ my college plan</div><div class="aes-big">🔒<span class="small"> tap to unlock</span></div><div class="aes-traj">Schools, deadlines and to-dos</div>`;
+}
+
+function cycleSch(id){
+  const cur = sget(id); const i = ["todo","draft","sub","won"].indexOf(cur.st);
+  const nx = ["todo","draft","sub","won"][(i+1)%4];
+  state.sch[id] = Object.assign({}, cur, {st:nx});
+  if (nx==="sub") { state.sch[id].subAt = new Date().toISOString(); state.xp += 50; state.rings.apply = Math.min(1,(state.rings.apply||0)+1); }
+  save(); render();
+}
+const SCH_LABEL = {todo:"○ To do", draft:"✎ Drafting", sub:"✓ Submitted", won:"★ Won"};
+function toggleElig(id){ const cur=sget(id); state.sch[id]=Object.assign({},cur,{elig:!cur.elig}); save(); render(); }
+function searchSch(name){ window.open("https://www.google.com/search?q="+encodeURIComponent(name+" scholarship eligibility deadline"),"_blank"); }
+function addSch(){
+  const n=document.getElementById("schName").value.trim(), d=document.getElementById("schDate").value, a=document.getElementById("schAmt").value.trim();
+  if(!n||!d) return;
+  state.customSch.push({id:"c"+Date.now(), t:n, d:d, amt:a, kind:"aid", note:"Added by you.", custom:true});
+  save(); render();
+}
+function delSch(id){ state.customSch = state.customSch.filter(s=>s.id!==id); delete state.sch[id]; save(); render(); }
+function tdToggle(id){ state.td[id]=!state.td[id]; save(); render(); }
+function go(v){ state.view=v; save(); render(); window.scrollTo({top:0}); }
+
+function mentorNote(){
+  if (STATUS_STATE !== "ok") return ["Unlock your status first so I can read your deadlines and give you a real plan."];
+  const n = subsThisWeek(), nx = mentorNext(), open = openItems();
+  const urgent = open.filter(s=>dleft(s.d)<=7);
+  const lines = [];
+  if (n===0) lines.push("You have not submitted anything this week yet. The goal is one a week, so pick the smallest one and finish it. A done application beats a perfect draft.");
+  else lines.push(`Nice: ${n} submitted this week. Goal met. Now protect the habit: same hour every Sunday.`);
+  if (urgent.length) lines.push(`${urgent.length} item${urgent.length>1?"s are":" is"} due within 7 days: ${urgent.slice(0,3).map(s=>s.t).join("; ")}.`);
+  if (nx) lines.push(`Next up: ${nx.t} (${fmtD(nx.d)}).`);
+  lines.push("Before you spend hours on any award, make sure you are allowed to receive it. Many national awards need US citizenship or permanent residence. Ask Mom or Dad if unsure, and tick the box only after reading the rules.");
+  return lines;
+}
+
+function statusCard(){
+  if (STATUS_STATE !== "ok") return lockCard();
+  const open = (STATUS.todos||[]).filter(t=>!state.td[t.id]).sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")).slice(0,3);
+  return `<div class="card m-card"><div class="card-label"><span>📍 My college status</span><span class="badge">as of ${fmtD(STATUS.updated)}</span></div>
+    <div class="card-q">${escapeH(STATUS.headline || "Here is where things stand.")}</div>
+    ${(STATUS.schools||[]).slice(0,4).map(s=>`<div class="m-hist"><b>${escapeH(s.n)}</b> · ${escapeH(s.s)}</div>`).join("")}
+    ${open.length ? `<div class="m-sub" style="margin-top:8px"><b>Do next:</b> ${open.map(t=>escapeH(t.t)+(t.due?" ("+fmtD(t.due)+")":"")).join(" · ")}</div>` : ""}
+    ${staleNote()}
+    <div class="m-row"><button class="m-btn" onclick="go('status')">Full status</button></div></div>`;
+}
+function mentorCard(){
+  if (state.filter!=="all") return "";
+  let h = statusCard();
+  if (STATUS_STATE === "ok") {
+    const nx = mentorNext(), n = subsThisWeek();
+    h += `<div class="card"><div class="card-label"><span>🧭 Mentor</span><span class="badge">${n}/1 this week</span></div>
+      <div class="card-q">${nx ? "Next: "+escapeH(nx.t) : "You are caught up. Find the next opportunity."}</div>
+      ${nx ? `<div class="m-sub">${fmtD(nx.d)} ${dchip(nx.d)}</div>` : ""}
+      <div class="m-row"><button class="m-btn" onclick="go('mentor')">Weekly check-in</button>
+      <button class="m-btn alt" onclick="go('aid')">Aid tracker</button>
+      <button class="m-btn alt" onclick="go('college')">College plan</button></div></div>`;
+  }
+  return h;
+}
+
+// ---------- Status view ----------
+function renderStatus(){
+  let html = `<button class="back-btn" onclick="go('home')">← back</button>
+    <div class="detail-h">my <span class="em">status</span></div>`;
+  if (STATUS_STATE !== "ok") { appEl.innerHTML = html + lockCard(); return; }
+  html += `<div class="detail-sub">Updated ${fmtD(STATUS.updated)}. This updates by itself from the family file.</div>${staleNote()}`;
+  html += `<div class="card"><div class="card-label">Schools</div>` + (STATUS.schools||[]).map(s=>`<div class="m-hist"><b>${escapeH(s.n)}</b> · ${escapeH(s.s)}${s.due?" · "+dchip(s.due):""}<br>${escapeH(s.note||"")}</div>`).join("") + `</div>`;
+  html += `<div class="card"><div class="card-label">Your to-dos</div>` + ((STATUS.todos||[]).slice().sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")).map(t=>`<label class="m-chk"><input type="checkbox" ${state.td[t.id]?"checked":""} onchange="tdToggle('${t.id}')"><span>${escapeH(t.t)}${t.who?" <i>("+escapeH(t.who)+")</i>":""}${t.due?" "+dchip(t.due):""}</span></label>`).join("") || `<div class="m-sub">Nothing open.</div>`) + `</div>`;
+  const items = allSch(), sub = items.filter(s=>["sub","won"].includes(sget(s.id).st)).length;
+  html += `<div class="card"><div class="card-label"><span>Scholarships</span><span>${sub} submitted · ${items.length} tracked</span></div><div class="m-row"><button class="m-btn" onclick="go('aid')">Open aid tracker</button></div></div>`;
+  if ((STATUS.imm||[]).length) html += `<div class="card"><div class="card-label">Your visa: what to know and do</div>${STATUS.imm.map(m=>`<p class="m-p"><b>${escapeH(m.t)}</b>${m.due?" "+dchip(m.due):""}<br>${escapeH(m.note||"")}</p>`).join("")}</div>`;
+  if ((STATUS.money||[]).length) html += `<div class="card"><div class="card-label">Cost and aid notes</div>${STATUS.money.map(m=>`<p class="m-p">${escapeH(m)}</p>`).join("")}</div>`;
+  if ((STATUS.confirm||[]).length) html += `<div class="card"><div class="card-label">Still to confirm with Mom or Dad</div>${STATUS.confirm.map(m=>`<p class="m-p">• ${escapeH(m)}</p>`).join("")}</div>`;
+  html += `<div class="card"><div class="m-row"><button class="m-btn alt" onclick="forgetDevice()">Lock and forget passcode on this device</button></div></div>`;
+  appEl.innerHTML = html;
+}
+
+// ---------- Mentor view ----------
+function renderMentor(){
+  const wk = weekStart().toISOString().slice(0,10);
+  const done = state.checkins.find(c=>c.wk===wk);
+  let html = `<button class="back-btn" onclick="go('home')">← back</button>
+    <div class="detail-h">your <span class="em">mentor</span></div>
+    <div class="detail-sub">Honest read of where you are, then one next step</div>
+    <div class="card m-card"><div class="card-label">Coach's read</div>${mentorNote().map(l=>`<p class="m-p">${escapeH(l)}</p>`).join("")}</div>`;
+  if (STATUS_STATE !== "ok") html += lockCard();
+  html += `<div class="card"><div class="card-label"><span>Weekly check-in</span><span>${done?"✓ done this week":"takes 2 minutes"}</span></div>
+      <label class="m-l">One win this week</label>
+      <textarea class="today-input" id="ciWin" placeholder="Anything counts: a draft, a question asked, a lab you understood">${escapeH(done?done.win:"")}</textarea>
+      <label class="m-l">What is blocking you?</label>
+      <textarea class="today-input" id="ciBlock" placeholder="Essay start, a letter, a form, motivation, time...">${escapeH(done?done.block:"")}</textarea>
+      <label class="m-l">Who can help? (a teacher, counselor, parent, friend)</label>
+      <input class="chat-in" id="ciHelp" value="${escapeH(done?done.help:"")}" placeholder="Name one person and what to ask them">
+      <label class="m-l">Energy this week: <span id="ciEnV">${done?done.en:3}</span>/5</label>
+      <input type="range" min="1" max="5" value="${done?done.en:3}" id="ciEn" oninput="document.getElementById('ciEnV').textContent=this.value" style="width:100%">
+      <button class="m-btn" style="margin-top:10px" onclick="saveCheckin()">Save check-in</button></div>
+    <div class="card"><div class="card-label">Ask the mentor (AI)</div><div class="quick-row">
+        <span class="quick-chip" onclick="askMentor('Help me outline a scholarship essay about a time I changed my mind. Ask me 3 questions first.')">Essay outline</span>
+        <span class="quick-chip" onclick="askMentor('Give me a 5-step plan to finish one scholarship application in 90 minutes.')">90-min plan</span>
+        <span class="quick-chip" onclick="askMentor('How do I politely ask a teacher for a recommendation letter?')">Ask for a letter</span>
+        <span class="quick-chip" onclick="askMentor('What should a first-year mechanical engineering student do to stand out?')">Freshman edge</span></div>
+      <div class="m-sub">The AI chat is a free outside service. Never type ID numbers, addresses, or immigration or money details into it.</div></div>
+    <div class="card"><div class="card-label">Essay story bank</div>
+      <div class="m-sub">Write 3 to 5 true stories once (a failure, a leadership moment, a challenge, why engineering). Reuse them across applications.</div>
+      <textarea class="today-input" style="min-height:120px" onblur="state.essayNotes=this.value;save();">${escapeH(state.essayNotes)}</textarea></div>`;
+  if (state.checkins.length) html += `<div class="card"><div class="card-label">Past check-ins</div>` + state.checkins.slice(-6).reverse().map(c=>`<div class="m-hist"><b>Week of ${c.wk}</b> · energy ${c.en}/5<br>Win: ${escapeH(c.win||"-")}<br>Blocker: ${escapeH(c.block||"-")}</div>`).join("") + `</div>`;
+  appEl.innerHTML = html;
+}
+function saveCheckin(){
+  const wk = weekStart().toISOString().slice(0,10);
+  const rec = {wk, win:document.getElementById("ciWin").value.trim(), block:document.getElementById("ciBlock").value.trim(), help:document.getElementById("ciHelp").value.trim(), en:+document.getElementById("ciEn").value};
+  const i = state.checkins.findIndex(c=>c.wk===wk);
+  if (i>=0) state.checkins[i]=rec; else { state.checkins.push(rec); state.xp += 30; state.rings.self = Math.min(1,(state.rings.self||0)+1); }
+  save(); render();
+}
+function askMentor(q){ state.view="tutor"; save(); render(); setTimeout(()=>{ const i=document.getElementById("chatIn"); if(i){ i.value=q; sendChat(); } }, 60); }
+
+// ---------- Aid tracker ----------
+function renderAid(){
+  const items = allSch();
+  const submitted = items.filter(s=>["sub","won"].includes(sget(s.id).st)).length;
+  let html = `<button class="back-btn" onclick="go('home')">← back</button>
+    <div class="detail-h">aid <span class="em">tracker</span></div>
+    <div class="detail-sub">${submitted} submitted · ${subsThisWeek()} this week · goal 1 a week. No award is guaranteed.</div>`;
+  if (STATUS_STATE !== "ok") html += lockCard();
+  html += `<div class="card m-card"><div class="card-label">Rules of the hunt</div>
+      <p class="m-p">1. Confirm you are allowed to receive it (citizenship or residency rules). 2. Reuse your essay stories. 3. Apply to local and niche awards, odds are better. 4. Ask each school's financial aid office what merit awards you can get, and compare <b>net cost</b>.</p></div>`;
+  items.forEach(s=>{
+    const v = sget(s.id);
+    html += `<div class="card m-item ${v.st==='won'?'won':''}">
+      <div class="m-top"><div class="m-title">${escapeH(s.t)}</div>${dchip(s.d)}</div>
+      <div class="m-sub">${fmtD(s.d)}${s.amt?" · "+escapeH(s.amt):""}</div>
+      <div class="m-note">${escapeH(s.note||"")}</div>
+      <div class="m-row">
+        <button class="m-btn ${v.st==='todo'?'alt':''}" onclick="cycleSch('${s.id}')">${SCH_LABEL[v.st]||SCH_LABEL.todo}</button>
+        <button class="m-btn alt" onclick="searchSch(${JSON.stringify(s.t).replace(/"/g,'&quot;')})">Rules ↗</button>
+        <label class="m-elig"><input type="checkbox" ${v.elig?"checked":""} onchange="toggleElig('${s.id}')"> I checked I'm eligible</label>
+        ${s.custom?`<button class="m-btn alt" onclick="delSch('${s.id}')">Remove</button>`:""}</div></div>`;
+  });
+  html += `<div class="card"><div class="card-label">Add an opportunity</div>
+      <input class="chat-in" id="schName" placeholder="Name"><div style="height:6px"></div>
+      <input class="chat-in" id="schDate" type="date"><div style="height:6px"></div>
+      <input class="chat-in" id="schAmt" placeholder="Amount (optional)"><div style="height:8px"></div>
+      <button class="m-btn" onclick="addSch()">Add</button></div>
+    <div class="card"><div class="card-label">Where to find more (opens a search)</div><div class="quick-row">
+      ${["engineering scholarships for women Texas","scholarships for international students in Texas","mechanical engineering scholarships ASME","scholarships incoming engineering freshmen","local Frisco Plano scholarships seniors"].map(q=>`<span class="quick-chip" onclick="window.open('https://www.google.com/search?q='+encodeURIComponent(${JSON.stringify(q).replace(/"/g,'&quot;')}),'_blank')">${q}</span>`).join("")}</div></div>`;
+  appEl.innerHTML = html;
+}
+
+// ---------- College plan (generic, no personal data) ----------
+const COL_READY = [
+  ["r1","Calculus I solid (and Calculus II started if credits allow). Ask your advisor which credits transfer and what placement tests exist."],
+  ["r2","Physics: mechanics first, then electricity and magnetism. Engineering physics is where many first-years struggle."],
+  ["r3","Learn Python or MATLAB basics. Almost every mechanical engineering course uses one."],
+  ["r4","Try CAD with free student or personal-use tools (Fusion, Onshape). Make 3 small parts."],
+  ["r5","Build something physical: a robot, a bike repair, a 3D print. Photograph it for your portfolio."],
+  ["r6","Chemistry and statistics are common requirements. Check the degree plan before taking extra classes."]
+];
+const COL_YEAR1 = [
+  ["y1","Go to office hours in week 2 of every class, not week 12"],
+  ["y2","Join one engineering team or club (design/build teams, SWE, robotics) in the first month"],
+  ["y3","Ask a professor about undergraduate research before the end of freshman year"],
+  ["y4","Use tutoring or supplemental instruction early, before grades slip"],
+  ["y5","Build a one-page resume and apply for a summer internship or program by February"],
+  ["y6","Meet your engineering advisor each semester and map the 4-year plan"],
+  ["y7","Re-apply for scholarships every year: many renew only with a GPA minimum"]
+];
+function colCheck(id){ state.col[id]=!state.col[id]; save(); render(); }
+function colList(arr){ return arr.map(([id,t])=>`<label class="m-chk"><input type="checkbox" ${state.col[id]?"checked":""} onchange="colCheck('${id}')"><span>${escapeH(t)}</span></label>`).join(""); }
+function renderCollege(){
+  let html = `<button class="back-btn" onclick="go('home')">← back</button>
+    <div class="detail-h">college <span class="em">plan</span></div>
+    <div class="detail-sub">Choose smart, then show up ready</div>`;
+  if (STATUS_STATE === "ok" && (STATUS.schools||[]).length) {
+    html += `<div class="card"><div class="card-label">Your options</div>` + STATUS.schools.map(s=>`<div class="m-hist"><b>${escapeH(s.n)}</b> · ${escapeH(s.s)}<br>${escapeH(s.note||"")}</div>`).join("") +
+      `<p class="m-p" style="margin-top:8px">Decision tip: compare <b>net cost per year</b> (tuition + housing − aid), and ask each school about its 4-year graduation rate and engineering internship support.</p></div>`;
+  } else html += lockCard();
+  html += `<div class="card"><div class="card-label">Get ready for mechanical engineering</div>${colList(COL_READY)}</div>
+    <div class="card"><div class="card-label">First-year playbook</div>${colList(COL_YEAR1)}</div>
+    <div class="card"><div class="card-label">Ask the mentor (AI)</div><div class="quick-row">
+      <span class="quick-chip" onclick="askMentor('Explain what a first-year mechanical engineering course load looks like and how to prepare this summer.')">First-year load</span>
+      <span class="quick-chip" onclick="askMentor('How do I find undergraduate research or a design team as a freshman engineer?')">Research & teams</span>
+      <span class="quick-chip" onclick="askMentor('Help me compare two engineering schools by net cost and outcomes. Ask what I need.')">Compare schools</span></div></div>`;
+  appEl.innerHTML = html;
+}
+function toggleMore(){ state.more = !state.more; save(); render(); }
+initStatus();
+
+render();
+</script>
+</body>
+</html>
