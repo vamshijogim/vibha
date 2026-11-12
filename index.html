@@ -406,6 +406,13 @@
   @media (min-width: 1500px) {
     body { zoom: 1.4; }
   }
+
+  /* v9.3: subject chips wrap so none is hidden; bottom menu can be minimized */
+  .chips { flex-wrap: wrap; overflow-x: visible; }
+  .sheet-toggle { width: 100%; background: none; border: none; font-family: inherit; font-weight: 900; font-size: 12px; letter-spacing: 0.3px; color: var(--text); padding: 6px 4px 4px; cursor: pointer; }
+  .sheet-hide { display: block; width: 100%; background: none; border: none; padding: 2px 0 0; cursor: pointer; font-family: inherit; font-size: 10px; font-weight: 800; color: var(--text-mute); }
+  body.sheet-min .sheet { padding: 4px 12px calc(8px + env(safe-area-inset-bottom)); }
+  body.sheet-min .app { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
 </style>
 </head>
 <body data-theme="peach">
@@ -1507,9 +1514,11 @@ function renderLive() {
 }
 
 function renderSheet() {
+  document.body.classList.toggle("sheet-min", !state.sheetOpen);
+  if (!state.sheetOpen) { sheetEl.innerHTML = `<button class="sheet-toggle" onclick="toggleSheet()">☰ Menu · Status · Mentor · Aid · College ▲</button>`; return; }
   sheetEl.innerHTML = `
-    <div class="sheet-handle"></div>
-    <div class="qa-grid" style="grid-template-columns: repeat(5, 1fr);">
+    <button class="sheet-hide" onclick="toggleSheet()"><div class="sheet-handle" style="margin:4px auto 4px;"></div>▼ hide menu</button>
+    <div class="qa-grid" style="grid-template-columns: repeat(5, 1fr);margin-top:6px;" onclick="setTimeout(()=>{state.sheetOpen=false;save();renderSheet();},0)">
       <button class="qa-btn" onclick="go('status')"><div class="qa-ic">📍</div><div class="qa-lb">Status</div></button>
       <button class="qa-btn" onclick="state.view='mentor';save();render();"><div class="qa-ic">🧭</div><div class="qa-lb">Mentor</div></button>
       <button class="qa-btn" onclick="state.view='aid';save();render();"><div class="qa-ic">🎓</div><div class="qa-lb">Aid</div></button>
@@ -1524,6 +1533,7 @@ function renderSheet() {
   `;
 }
 
+function toggleSheet(){ state.sheetOpen = !state.sheetOpen; save(); renderSheet(); }
 // ===================== ACTIONS =====================
 function setFilter(k) { state.filter = k; save(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function openThemes() {
