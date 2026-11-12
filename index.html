@@ -407,6 +407,8 @@
     body { zoom: 1.4; }
   }
 
+  /* v9.4: private answers + how-to steps + opportunities */
+  .chat-msg { white-space: pre-line; }
   /* v9.3: subject chips wrap so none is hidden; bottom menu can be minimized */
   .chips { flex-wrap: wrap; overflow-x: visible; }
   .sheet-toggle { width: 100%; background: none; border: none; font-family: inherit; font-weight: 900; font-size: 12px; letter-spacing: 0.3px; color: var(--text); padding: 6px 4px 4px; cursor: pointer; }
@@ -1357,7 +1359,7 @@ function renderTutor() {
         <span class="quick-chip" onclick="qp('Draft a 650-word Common App essay opening — I want to write about changing my mind.')">Essay opener</span>
         <span class="quick-chip" onclick="qp('Explain limits like I just finished APs.')">Limits 101</span>
       </div>
-      <div class="chat-input-row">
+      <div class="m-sub" style="font-size:11px;margin-bottom:6px;">Questions about your own deadlines, schools and visa are answered from your private status and never leave this device. Other questions go to a free AI service without your name. Do not type ID numbers, addresses or passwords.</div><div class="chat-input-row">
         <input class="chat-in" id="chatIn" placeholder="${NAME}, ask anything..." onkeypress="if(event.key==='Enter')sendChat()" />
         <button class="send-btn" onclick="sendChat()">Send</button>
       </div>
@@ -1628,6 +1630,13 @@ async function sendChat() {
   if (!q) return;
   inp.value = "";
   state.chat.push({r:"user",t:q});
+  if (/\d{6,}/.test(q) || /\S+@\S+\.\S+/.test(q)) {
+    state.chat.push({r:"tutor",p:"Private check",t:"That looks like it has a personal number or email in it, so I did not send it anywhere. Ask again without it, or ask Dad."});
+    save(); render(); return;
+  }
+  const la = localAnswer(q);
+  if (la) state.chat.push({r:"tutor",p:"From your status (stays on this device)",t:la.text});
+  if (la && la.only) { save(); render(); return; }
   state.chat.push({r:"tutor",p:"Thinking...",t:"..."});
   save(); render();
   const profMap = {
@@ -1639,9 +1648,9 @@ async function sendChat() {
     khan:"Sal Khan (SAT)",
     any:"the right Ivy professor for the question"
   };
-  const sys = `You are ${profMap[state.prof]} mentoring ${NAME}, a 17-year-old AP student at high school in Texas. PRIMARY: winning scholarships and starting college engineering strongly (already admitted to university). Secondary: master her APs (Calc via MIT/Jerison, Stats via Harvard/Blitzstein, Lit via Yale/Fry, Env Sci via Yale/Smith, Art via MoMA/Mazzola). Also enrolled in Collin College dual credit (transfers to many Texas universities). Tertiary: scholarship applications.
+  const sys = `You are ${profMap[state.prof]} mentoring a high school senior in Texas who is headed into mechanical engineering. PRIMARY: winning scholarships and starting college engineering strongly (already admitted to university). Secondary: master her APs (Calc via MIT/Jerison, Stats via Harvard/Blitzstein, Lit via Yale/Fry, Env Sci via Yale/Smith, Art via MoMA/Mazzola). Also enrolled in Collin College dual credit (transfers to many Texas universities). Tertiary: scholarship applications.
 
-Warm Ivy-professor tone. MAX 160 words. Reference specific lectures when relevant. No markdown headers. Flowing prose. Concrete & actionable. Address her as ${NAME}.
+Warm Ivy-professor tone. MAX 160 words. Reference specific lectures when relevant. No markdown headers. Flowing prose. Concrete & actionable. Do not ask for or use any personal details. Never give visa, immigration, work-authorization or legal advice: for those say "check with a parent first". If asked about internships or jobs, describe what exists and say eligibility must be checked on the official page.
 
 Question: ${q}`;
   try {
@@ -1657,6 +1666,29 @@ Question: ${q}`;
     state.chat.push({r:"tutor",p:"Faculty",t:`(${NAME}, AI offline — try again in 60 sec.)`});
     save(); render();
   }
+}
+function localAnswer(q){
+  if (STATUS_STATE !== "ok" || !STATUS) return null;
+  const s = q.toLowerCase(), out = [];
+  const visa = /\b(visa|l-?2|f-?1|uscis|i-?94|i-?797|green ?card|immigration|travel|abroad|passport|work permit|ssn|citizen)/.test(s);
+  const work = /\b(intern|job|paid|co-?op|part.?time)/.test(s);
+  if (visa) {
+    (STATUS.imm||[]).forEach(m => out.push("• " + m.t + (m.note ? ": " + m.note : "")));
+    out.push("For anything about your visa, travel or paid work, talk to Dad before you act.");
+    return {text: out.join("\n"), only: true};
+  }
+  if (work) {
+    (STATUS.opps||[]).filter(o=>/intern|program|research/i.test((o.kind||"")+" "+o.t)).slice(0,4).forEach(o => out.push("• " + o.t + (o.date ? " (" + fmtD(o.date) + ")" : "") + (o.elig ? ". Who can apply: " + o.elig : "")));
+    out.push("Paid work depends on your visa, so check with Dad before applying for anything paid. Unpaid programs, research and volunteering are worth exploring.");
+  }
+  if (/\b(deadline|due|next|to-?do|this week|today|what should i do|what do i do|priorit)/.test(s)) {
+    (STATUS.todos||[]).filter(t=>!state.td[t.id]).sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")).slice(0,3).forEach(t => out.push("• " + t.t + (t.due ? " (by " + fmtD(t.due) + ")" : "")));
+  }
+  const skip = new Set(["university","college","engineering","scholarship","scholars","state","texas","the","and","for","north","program"]);
+  const hit = name => name.toLowerCase().split(/[^a-z0-9]+/).some(w => w.length > 3 && !skip.has(w) && s.includes(w)) || (/\but ?d\b|ut dallas/.test(s) && /dallas/i.test(name));
+  (STATUS.schools||[]).filter(x=>hit(x.n)).slice(0,2).forEach(x => out.push("• " + x.n + " (" + x.s + "): " + (x.note||"")));
+  (STATUS.scholarships||[]).filter(x=>hit(x.t)).slice(0,3).forEach(x => out.push("• " + x.t + (x.d ? ", due " + fmtD(x.d) : "") + (x.amt ? ", " + x.amt : "") + (x.note ? ". " + x.note : "")));
+  return out.length ? {text: out.join("\n"), only: false} : null;
 }
 function exportData() {
   const blob = new Blob([JSON.stringify(state,null,2)], {type:'application/json'});
@@ -1844,9 +1876,10 @@ function renderStatus(){
   if (STATUS_STATE !== "ok") { appEl.innerHTML = html + lockCard(); return; }
   html += `<div class="detail-sub">Updated ${fmtD(STATUS.updated)}. This updates by itself from the family file.</div>${staleNote()}`;
   html += `<div class="card"><div class="card-label">Schools</div>` + (STATUS.schools||[]).map(s=>`<div class="m-hist"><b>${escapeH(s.n)}</b> · ${escapeH(s.s)}${s.due?" · "+dchip(s.due):""}<br>${escapeH(s.note||"")}</div>`).join("") + `</div>`;
-  html += `<div class="card"><div class="card-label">Your to-dos</div>` + ((STATUS.todos||[]).slice().sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")).map(t=>`<label class="m-chk"><input type="checkbox" ${state.td[t.id]?"checked":""} onchange="tdToggle('${t.id}')"><span>${escapeH(t.t)}${t.who?" <i>("+escapeH(t.who)+")</i>":""}${t.due?" "+dchip(t.due):""}</span></label>`).join("") || `<div class="m-sub">Nothing open.</div>`) + `</div>`;
+  html += `<div class="card"><div class="card-label">Your to-dos</div>` + ((STATUS.todos||[]).slice().sort((a,b)=>(a.due||"9").localeCompare(b.due||"9")).map(t=>`<label class="m-chk"><input type="checkbox" ${state.td[t.id]?"checked":""} onchange="tdToggle('${t.id}')"><span>${escapeH(t.t)}${t.who?" <i>("+escapeH(t.who)+")</i>":""}${t.due?" "+dchip(t.due):""}</span></label>${(t.how||[]).length?`<details style="margin:2px 0 10px 28px;"><summary style="cursor:pointer;font-size:12px;font-weight:800;color:var(--accent);">How to do it</summary><ol style="margin:6px 0 0 18px;font-size:13px;line-height:1.5;">${t.how.map(h=>`<li>${escapeH(h)}</li>`).join("")}</ol>${/^https:\/\//.test(t.url||"")?`<a href="${escapeH(t.url)}" target="_blank" rel="noopener noreferrer" style="font-size:12px;font-weight:800;">Open the official page</a>`:""}</details>`:""}`).join("") || `<div class="m-sub">Nothing open.</div>`) + `</div>`;
   const items = allSch(), sub = items.filter(s=>["sub","won"].includes(sget(s.id).st)).length;
   html += `<div class="card"><div class="card-label"><span>Scholarships</span><span>${sub} submitted · ${items.length} tracked</span></div><div class="m-row"><button class="m-btn" onclick="go('aid')">Open aid tracker</button></div></div>`;
+  if ((STATUS.opps||[]).length) html += `<div class="card"><div class="card-label">Opportunities for you</div>${STATUS.opps.slice().sort((a,b)=>(a.date||"9").localeCompare(b.date||"9")).map(o=>`<p class="m-p"><b>${escapeH(o.t)}</b>${o.kind?" · "+escapeH(o.kind):""}${o.date?" "+dchip(o.date):""}<br>${escapeH(o.where||"")}${o.elig?`<br><i>Who can apply: ${escapeH(o.elig)}</i>`:""}${/^https:\/\//.test(o.url||"")?`<br><a href="${escapeH(o.url)}" target="_blank" rel="noopener noreferrer">Details</a>`:""}</p>`).join("")}</div>`;
   if ((STATUS.events||[]).length) html += `<div class="card"><div class="card-label">Events for you</div>${STATUS.events.slice().sort((a,b)=>(a.date||"9").localeCompare(b.date||"9")).map(e=>`<p class="m-p"><b>${escapeH(e.t)}</b>${e.date?" "+dchip(e.date):""}<br>${escapeH(e.where||"")}${e.why?" · "+escapeH(e.why):""}${/^https:\/\//.test(e.url||"")?`<br><a href="${escapeH(e.url)}" target="_blank" rel="noopener noreferrer">Details</a>`:""}</p>`).join("")}</div>`;
   if ((STATUS.imm||[]).length) html += `<div class="card"><div class="card-label">Your visa: what to know and do</div>${STATUS.imm.map(m=>`<p class="m-p"><b>${escapeH(m.t)}</b>${m.due?" "+dchip(m.due):""}<br>${escapeH(m.note||"")}</p>`).join("")}</div>`;
   if ((STATUS.money||[]).length) html += `<div class="card"><div class="card-label">Cost and aid notes</div>${STATUS.money.map(m=>`<p class="m-p">${escapeH(m)}</p>`).join("")}</div>`;
